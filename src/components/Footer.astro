@@ -1,0 +1,76 @@
+---
+import { routes, site } from '../data/site';
+const year = new Date().getFullYear();
+---
+
+<footer style="position:relative;background:#070709;color:#A8A5AC;padding:64px 24px 0;border-top:1px solid rgba(255,255,255,0.07);overflow:hidden">
+  <div style="max-width:1180px;margin:0 auto;position:relative;z-index:1">
+    <div class="bc-r-stack" style="display:flex;justify-content:space-between;align-items:flex-start;gap:36px;flex-wrap:wrap;padding-bottom:44px;border-bottom:1px solid rgba(255,255,255,0.07)">
+      <div style="max-width:430px">
+        <div style="display:flex;align-items:center;gap:11px;margin-bottom:20px">
+          <img src="/brand/crown-magenta.png" alt="Black Crown Tint" style="height:40px;width:auto;display:block" width="40" height="40" />
+          <div style="line-height:1;color:#fff"><div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:16px;letter-spacing:0.05em">BLACK CROWN</div><div style="font-family:'Playfair Display',serif;font-weight:700;font-size:10px;letter-spacing:0.44em;color:#C81878;margin-top:4px">TINT</div></div>
+        </div>
+        <p style="font-family:'Poppins',sans-serif;font-size:24px;line-height:1.25;font-weight:600"><span style="color:#fff">{site.slogan1}</span> <span style="color:#C81878">{site.slogan2}</span></p>
+        <p style="font-size:14px;line-height:1.65;margin-top:16px;max-width:380px;color:#A8A5AC;font-weight:400">Premium 3M auto, home &amp; commercial window tinting. 100% mobile across Northeast Florida. Licensed &amp; Insured.</p>
+      </div>
+      <div style="display:flex;flex-direction:column;gap:16px;align-items:flex-start">
+        <div style="font-size:12px;font-weight:600;letter-spacing:0.14em;color:#71717A">FOLLOW &amp; CONNECT</div>
+        <div style="display:flex;gap:11px">
+          <a href={site.phoneHref} class="bc-soc" aria-label="Call"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></a>
+          <a href={site.emailHref} class="bc-soc" aria-label="Email"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 5L2 7"></path></svg></a>
+          <a href={site.instagramHref} class="bc-soc" aria-label="Instagram"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></a>
+        </div>
+        <a href={routes.contact} data-magnetic class="bc-cta-btn" style="display:flex;align-items:center;gap:9px;background:#C81878;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;padding:15px 26px;border-radius:999px;margin-top:6px">Get a free quote
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+        </a>
+      </div>
+    </div>
+    <div class="bc-r-4" style="display:grid;grid-template-columns:1fr 1fr 1fr 1.1fr;gap:30px;padding:40px 0 44px">
+      <div>
+        <div style="color:#fff;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.04em;margin-bottom:18px">Services</div>
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:14px;font-weight:400">
+          <a href={routes.auto} class="bc-foot-link">Auto Window Tinting</a>
+          <a href={routes.residential} class="bc-foot-link">Residential</a>
+          <a href={routes.commercial} class="bc-foot-link">Commercial</a>
+          <a href={routes.ceramic} class="bc-foot-link">Ceramic Tint</a>
+        </div>
+      </div>
+      <div>
+        <div style="color:#fff;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.04em;margin-bottom:18px">Learn</div>
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:14px;font-weight:400">
+          <a href={routes.floridaLaws} class="bc-foot-link" style="color:#C81878">Florida Tint Laws</a>
+          <a href={routes.ceramicVsCarbon} class="bc-foot-link">Ceramic vs Carbon</a>
+          <a href={routes.cost} class="bc-foot-link">Tinting Cost</a>
+          <a href={routes.installation} class="bc-foot-link">Installation</a>
+        </div>
+      </div>
+      <div>
+        <div style="color:#fff;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.04em;margin-bottom:18px">Company</div>
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:14px;font-weight:400">
+          <a href={routes.about} class="bc-foot-link">About</a>
+          <a href={routes.reviews} class="bc-foot-link">Reviews</a>
+          <a href={routes.gallery} class="bc-foot-link">Gallery</a>
+          <a href={routes.serviceAreas} class="bc-foot-link">Service Areas</a>
+        </div>
+      </div>
+      <div>
+        <div style="color:#fff;font-family:'Poppins',sans-serif;font-weight:600;font-size:13px;letter-spacing:0.04em;margin-bottom:18px">Contact</div>
+        <div style="display:flex;flex-direction:column;gap:12px;font-size:14px;font-weight:400">
+          <a href={site.phoneHref} class="bc-foot-link">{site.phone}</a>
+          <a href={site.emailHref} class="bc-foot-link">{site.email}</a>
+          <a href={site.instagramHref} class="bc-foot-link">{site.instagram}</a>
+          <span style="color:#71717A">Jacksonville, FL · Mobile only</span>
+        </div>
+      </div>
+    </div>
+    <div class="bc-r-stack" style="display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:14px;font-size:12.5px;color:#52525B;font-weight:400;padding:22px 0 30px;border-top:1px solid rgba(255,255,255,0.07)">
+      <span>© {year} Black Crown Tint. Licensed &amp; Insured.</span>
+      <div style="display:flex;align-items:center;gap:16px">
+        <span>Window Tinting · Jacksonville, FL</span>
+        <a href="#top" class="bc-totop" style="display:flex;align-items:center;justify-content:center;width:40px;height:40px;border-radius:50%;border:1px solid rgba(255,255,255,0.16);color:#C8C5CE" aria-label="Back to top"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="19" x2="12" y2="5"></line><polyline points="5 12 12 5 19 12"></polyline></svg></a>
+      </div>
+    </div>
+  </div>
+  <div aria-hidden="true" style="position:absolute;left:50%;transform:translateX(-50%);bottom:-22px;width:100%;text-align:center"><div class="bc-watermark" style="font-size:clamp(54px,15vw,196px);white-space:nowrap">BLACK CROWN</div></div>
+</footer>

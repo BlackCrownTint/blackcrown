@@ -1,0 +1,373 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import BeforeAfterSlider from '../components/BeforeAfterSlider.astro';
+import FAQ from '../components/FAQ.astro';
+import QuoteForm from '../components/QuoteForm.astro';
+import { routes, site, homeAreas } from '../data/site';
+
+const title = 'Window Tinting Jacksonville FL | Black Crown Tint';
+const description =
+  'Premium 3M auto, residential & commercial window tinting in Jacksonville, FL. Lifetime ceramic warranty, 100% mobile. Crown your ride — free quote today.';
+
+const stats = [
+  { to: 99, suffix: '%', label: 'of UV blocked' },
+  { to: 60, suffix: '%+', label: 'heat rejected' },
+  { to: 18, suffix: '', label: 'areas served' },
+  { to: 100, suffix: '%', label: 'mobile service' },
+];
+
+const work = [
+  { cat: 'Auto', title: 'Tesla · Ceramic', ph: 'sedan ceramic', bg: 'linear-gradient(150deg,#1a1a1f,#2a1622)' },
+  { cat: 'Auto', title: 'SUV · Full tint', ph: 'SUV full', bg: 'linear-gradient(150deg,#181820,#221a2a)' },
+  { cat: 'Residential', title: 'Home · Solar film', ph: 'living room', bg: 'linear-gradient(150deg,#1a1a1f,#1c2230)' },
+  { cat: 'Commercial', title: 'Storefront', ph: 'storefront', bg: 'linear-gradient(150deg,#191921,#2a1622)' },
+  { cat: 'Auto', title: 'Exotic · Detail', ph: 'exotic', bg: 'linear-gradient(150deg,#1a1620,#2a1424)' },
+  { cat: 'Auto', title: 'Truck · Rear glass', ph: 'truck rear', bg: 'linear-gradient(150deg,#181820,#201a26)' },
+];
+
+const reviews = [
+  { text: 'Add a real customer review here — pull your best from Instagram or Google.', name: 'Customer name', where: 'Jacksonville, FL', initial: 'C' },
+  { text: 'Add a real customer review here — pull your best from Instagram or Google.', name: 'Customer name', where: 'Jacksonville Beach, FL', initial: 'M' },
+  { text: 'Add a real customer review here — pull your best from Instagram or Google.', name: 'Customer name', where: 'Orange Park, FL', initial: 'J' },
+];
+
+const faqs = [
+  { q: 'How much does window tinting cost?', a: 'It depends on your vehicle, the number of windows and the film you choose — carbon is the value option, ceramic is the premium pick. The fastest way to a real number is a free quote.' },
+  { q: 'How long does an install take?', a: "A typical full-vehicle install takes a few hours. Because we're mobile, we come to you — and we let the film cure fully over the following days." },
+  { q: 'Is your tint legal in Florida?', a: "Yes. We install to Florida's legal VLT limits — 28% on front side windows and 15% on sedan rears — so you avoid fix-it tickets. See our Florida tint laws guide for the full breakdown." },
+  { q: 'Will tint fade or turn purple?', a: 'Not with quality film. Cheap dyed film turns purple and bubbles over time. Our 3M carbon and ceramic films hold their color and performance — backed by a lifetime ceramic warranty (5 years on carbon).' },
+  { q: 'Do you offer a warranty?', a: 'Yes — a lifetime warranty on 3M ceramic film and 5 years on 3M carbon, covered against everything.' },
+];
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': site.url + '/#business',
+  name: site.name,
+  url: site.url,
+  telephone: '+19048930927',
+  email: site.email,
+  image: site.url + '/brand/logo-lockup.png',
+  priceRange: '$$',
+  areaServed: 'Jacksonville, FL and Northeast Florida',
+  address: { '@type': 'PostalAddress', addressLocality: 'Jacksonville', addressRegion: 'FL', addressCountry: 'US' },
+  sameAs: [site.instagramHref],
+  slogan: 'Crown your ride. Protect what matters.',
+};
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <!-- ===== HERO ===== -->
+  <section style="position:relative;background:#0A0A0C;color:#fff;overflow:hidden;padding-bottom:40px">
+    <div data-parallax="0.28" style="position:absolute;top:-200px;right:-160px;width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(200,24,120,0.34),transparent 62%);filter:blur(20px);pointer-events:none"></div>
+    <div data-parallax="-0.22" style="position:absolute;bottom:-260px;left:-180px;width:560px;height:560px;border-radius:50%;background:radial-gradient(circle,rgba(146,10,90,0.28),transparent 65%);filter:blur(20px);pointer-events:none"></div>
+    <div class="bc-r-hero" style="position:relative;max-width:1180px;margin:0 auto;padding:64px 24px 0;display:grid;grid-template-columns:1fr 1.04fr;gap:54px;align-items:center">
+      <div>
+        <div style="display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(200,24,120,0.45);border-radius:999px;padding:7px 15px;font-size:12px;font-weight:600;letter-spacing:0.05em;color:#fff;margin-bottom:26px;background:rgba(200,24,120,0.1)">
+          <span style="width:6px;height:6px;background:#C81878;border-radius:50%;animation:bcPulse 2s ease-in-out infinite"></span>JACKSONVILLE · 100% MOBILE SERVICE
+        </div>
+        <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(40px,5.6vw,68px);line-height:1.0;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:24px">
+          <span style="display:block;overflow:hidden;padding-bottom:3px"><span class="bc-hero-word">Crown</span></span>
+          <span style="display:block;overflow:hidden;padding-bottom:3px"><span class="bc-hero-word">your&nbsp;</span><span class="bc-hero-word" style="color:#C81878">ride</span></span>
+        </h1>
+        <p style="font-size:18.5px;line-height:1.62;color:#A8A5AC;max-width:480px;font-weight:400">Premium 3M ceramic film that beats the Florida heat, blocks 99% of UV and finishes your car like the exotics we tinted in Dubai. Backed for life.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:34px">
+          <a href={routes.contact} data-magnetic class="bc-cta-btn" style="background:#C81878;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;padding:16px 30px;border-radius:10px;display:flex;align-items:center;gap:10px">Get a free quote
+            <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+          </a>
+          <a href={site.phoneHref} data-magnetic class="bc-ghost" style="border:1px solid rgba(255,255,255,0.22);color:#fff;font-weight:600;font-size:15.5px;padding:16px 28px;border-radius:10px;display:flex;align-items:center;gap:10px">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+            {site.phone}</a>
+        </div>
+        <div style="display:flex;align-items:center;gap:22px;margin-top:34px;flex-wrap:wrap">
+          <div style="display:flex;align-items:center;gap:9px;font-size:13px;color:#A8A5AC;font-weight:500"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"></path><path d="m9 12 2 2 4-4"></path></svg>3M Authorized</div>
+          <div style="display:flex;align-items:center;gap:9px;font-size:13px;color:#A8A5AC;font-weight:500"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"></path></svg>Lifetime warranty</div>
+          <div style="display:flex;align-items:center;gap:9px;font-size:13px;color:#A8A5AC;font-weight:500"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-1a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v1a2 2 0 0 1-2 2M7 17v2M17 17v2"></path></svg>We come to you</div>
+        </div>
+      </div>
+
+      <!-- INTERACTIVE BEFORE/AFTER SLIDER -->
+      <BeforeAfterSlider />
+    </div>
+  </section>
+
+  <!-- ===== MARQUEE TRUST ===== -->
+  <section style="background:#111114;border-top:1px solid rgba(200,24,120,0.2);border-bottom:1px solid rgba(255,255,255,0.05);overflow:hidden;padding:18px 0">
+    <div style="display:flex;width:max-content;animation:bcMarquee 32s linear infinite">
+      <div style="display:flex;align-items:center;gap:38px;padding-right:38px;color:#A8A5AC;font-size:14px;font-weight:600;letter-spacing:0.06em;white-space:nowrap">
+        <span style="display:flex;align-items:center;gap:38px"><span>3M™ AUTHORIZED FILMS</span><span style="color:#C81878">✦</span><span>LIFETIME CERAMIC WARRANTY</span><span style="color:#C81878">✦</span><span>100% MOBILE SERVICE</span><span style="color:#C81878">✦</span><span>DUBAI EXOTIC EXPERIENCE</span><span style="color:#C81878">✦</span><span>LICENSED &amp; INSURED</span><span style="color:#C81878">✦</span></span>
+      </div>
+      <div style="display:flex;align-items:center;gap:38px;padding-right:38px;color:#A8A5AC;font-size:14px;font-weight:600;letter-spacing:0.06em;white-space:nowrap" aria-hidden="true">
+        <span style="display:flex;align-items:center;gap:38px"><span>3M™ AUTHORIZED FILMS</span><span style="color:#C81878">✦</span><span>LIFETIME CERAMIC WARRANTY</span><span style="color:#C81878">✦</span><span>100% MOBILE SERVICE</span><span style="color:#C81878">✦</span><span>DUBAI EXOTIC EXPERIENCE</span><span style="color:#C81878">✦</span><span>LICENSED &amp; INSURED</span><span style="color:#C81878">✦</span></span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== STATS BAND ===== -->
+  <section style="background:#0A0A0C;color:#fff;padding:62px 24px;border-bottom:1px solid rgba(255,255,255,0.05)">
+    <div class="bc-r-4" style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(4,1fr);gap:24px">
+      {stats.map((s) => (
+        <div class="bc-reveal" data-reveal style="text-align:center">
+          <div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(40px,5vw,62px);line-height:1;letter-spacing:-0.02em;color:#fff"><span class="bc-num" data-to={s.to}>{s.to}</span><span style="color:#C81878">{s.suffix}</span></div>
+          <div style="margin-top:10px;font-size:14px;color:#A8A5AC;font-weight:500;letter-spacing:0.02em">{s.label}</div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  <!-- ===== SERVICES ===== -->
+  <section style="background:#F5F4F6;padding:88px 24px">
+    <div style="max-width:1180px;margin:0 auto">
+      <div class="bc-reveal" data-reveal style="text-align:center;max-width:560px;margin:0 auto 50px">
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">OUR SERVICES</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,44px);line-height:1.08;letter-spacing:-0.01em;color:#0A0A0C">Tint for your car, home &amp; business</h2>
+      </div>
+      <div class="bc-r-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:26px">
+        <a href={routes.auto} class="bc-svc bc-reveal" data-reveal data-tilt style="background:#fff;border-radius:20px;overflow:hidden;display:block;box-shadow:0 14px 30px -18px rgba(0,0,0,.2)">
+          <div style="position:relative;aspect-ratio:16/11;background:linear-gradient(150deg,#1a1a1f,#2a1622);overflow:hidden">
+            <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 80% 10%,rgba(200,24,120,.32),transparent 55%)"></div>
+            <div style="position:absolute;left:22px;bottom:-2px;width:60%;height:58%;border-radius:14px 14px 0 0;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);border-bottom:none"></div>
+            <div style="position:absolute;top:18px;left:18px;width:50px;height:50px;border-radius:14px;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -8px rgba(200,24,120,.5)">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13M5 13h14v4a1 1 0 0 1-1 1h-1a1 1 0 0 1-1-1v-1H8v1a1 1 0 0 1-1 1H6a1 1 0 0 1-1-1v-4z"></path><circle cx="7.5" cy="15.5" r=".6"></circle><circle cx="16.5" cy="15.5" r=".6"></circle></svg>
+            </div>
+          </div>
+          <div style="padding:26px 26px 28px">
+            <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:21px;margin-bottom:10px;color:#0A0A0C">Auto Window Tinting</h3>
+            <p style="color:#52525B;font-size:15px;line-height:1.6;font-weight:400;margin-bottom:18px">Cut cabin heat and glare, block UV, and add privacy with sharp, legal 3M film.</p>
+            <span style="color:#C81878;font-weight:600;font-size:14.5px;display:flex;align-items:center;gap:8px">Explore auto tint <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+          </div>
+        </a>
+        <a href={routes.residential} class="bc-svc bc-reveal" data-reveal data-tilt style="background:#fff;border-radius:20px;overflow:hidden;display:block;box-shadow:0 14px 30px -18px rgba(0,0,0,.2)">
+          <div style="position:relative;aspect-ratio:16/11;background:linear-gradient(150deg,#1a1a1f,#221a2a);overflow:hidden">
+            <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 80% 10%,rgba(200,24,120,.28),transparent 55%)"></div>
+            <div style="position:absolute;right:26px;bottom:-2px;width:42%;height:64%;border-radius:10px 10px 0 0;background:linear-gradient(180deg,rgba(255,255,255,.08),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);border-bottom:none"></div>
+            <div style="position:absolute;top:18px;left:18px;width:50px;height:50px;border-radius:14px;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -8px rgba(200,24,120,.5)">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"></path><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"></path><path d="M9 20v-6h6v6"></path></svg>
+            </div>
+          </div>
+          <div style="padding:26px 26px 28px">
+            <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:21px;margin-bottom:10px;color:#0A0A0C">Residential</h3>
+            <p style="color:#52525B;font-size:15px;line-height:1.6;font-weight:400;margin-bottom:18px">Lower energy bills, protect furniture from fading, and add privacy at home.</p>
+            <span style="color:#C81878;font-weight:600;font-size:14.5px;display:flex;align-items:center;gap:8px">Explore home tint <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+          </div>
+        </a>
+        <a href={routes.commercial} class="bc-svc bc-reveal" data-reveal data-tilt style="background:#fff;border-radius:20px;overflow:hidden;display:block;box-shadow:0 14px 30px -18px rgba(0,0,0,.2)">
+          <div style="position:relative;aspect-ratio:16/11;background:linear-gradient(150deg,#1a1a1f,#1c1622);overflow:hidden">
+            <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 80% 10%,rgba(200,24,120,.26),transparent 55%)"></div>
+            <div style="position:absolute;left:24px;bottom:-2px;width:26%;height:70%;border-radius:8px 8px 0 0;background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.1);border-bottom:none"></div>
+            <div style="position:absolute;left:56px;bottom:-2px;width:30%;height:54%;border-radius:8px 8px 0 0;background:linear-gradient(180deg,rgba(255,255,255,.06),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.08);border-bottom:none"></div>
+            <div style="position:absolute;top:18px;left:18px;width:50px;height:50px;border-radius:14px;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -8px rgba(200,24,120,.5)">
+              <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"></rect><path d="M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01M10 21v-4h4v4"></path></svg>
+            </div>
+          </div>
+          <div style="padding:26px 26px 28px">
+            <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:21px;margin-bottom:10px;color:#0A0A0C">Commercial</h3>
+            <p style="color:#52525B;font-size:15px;line-height:1.6;font-weight:400;margin-bottom:18px">Cut A/C costs, improve comfort, and protect your storefront and inventory.</p>
+            <span style="color:#C81878;font-weight:600;font-size:14.5px;display:flex;align-items:center;gap:8px">Explore commercial <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></span>
+          </div>
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== WHY CHOOSE ===== -->
+  <section style="background:#0A0A0C;color:#fff;padding:90px 24px;position:relative;overflow:hidden">
+    <div style="position:absolute;top:-160px;right:-120px;width:520px;height:520px;border-radius:50%;background:radial-gradient(circle,rgba(200,24,120,0.2),transparent 65%);filter:blur(10px)"></div>
+    <div style="position:relative;max-width:1180px;margin:0 auto">
+      <div class="bc-reveal" data-reveal style="max-width:600px;margin-bottom:50px">
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">WHY BLACK CROWN</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,44px);line-height:1.08;letter-spacing:-0.01em">Done right, backed, built to last</h2>
+      </div>
+      <div class="bc-r-4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+        <div class="bc-why bc-reveal" data-reveal style="border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:32px 26px;background:linear-gradient(180deg,#16161a,#101013)">
+          <div style="width:48px;height:48px;border-radius:13px;background:rgba(200,24,120,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:20px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"></path><path d="m9 12 2 2 4-4"></path></svg></div>
+          <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;margin-bottom:9px">Premium 3M film</h3>
+          <p style="color:#A8A5AC;font-size:14px;line-height:1.6;font-weight:400">Ceramic and carbon that rejects heat and won't turn purple or bubble.</p>
+        </div>
+        <div class="bc-why bc-reveal" data-reveal style="border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:32px 26px;background:linear-gradient(180deg,#16161a,#101013)">
+          <div style="width:48px;height:48px;border-radius:13px;background:rgba(200,24,120,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:20px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"></path></svg></div>
+          <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;margin-bottom:9px">Lifetime warranty</h3>
+          <p style="color:#A8A5AC;font-size:14px;line-height:1.6;font-weight:400">Lifetime on 3M ceramic, 5 years on carbon — covered against everything.</p>
+        </div>
+        <div class="bc-why bc-reveal" data-reveal style="border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:32px 26px;background:linear-gradient(180deg,#16161a,#101013)">
+          <div style="width:48px;height:48px;border-radius:13px;background:rgba(200,24,120,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:20px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11l9-7 9 7"></path><path d="M5 10v9a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1v-9"></path><path d="m9 21 1.5-4.5L9 14l3-1 1 2 2-1-1 3"></path></svg></div>
+          <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;margin-bottom:9px">We come to you</h3>
+          <p style="color:#A8A5AC;font-size:14px;line-height:1.6;font-weight:400">100% mobile service across Northeast Florida — driveway or office.</p>
+        </div>
+        <div class="bc-why bc-reveal" data-reveal style="border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:32px 26px;background:linear-gradient(180deg,#16161a,#101013)">
+          <div style="width:48px;height:48px;border-radius:13px;background:rgba(200,24,120,0.14);display:flex;align-items:center;justify-content:center;margin-bottom:20px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg></div>
+          <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;margin-bottom:9px">Exotic experience</h3>
+          <p style="color:#A8A5AC;font-size:14px;line-height:1.6;font-weight:400">Trained on Ferrari, Porsche &amp; Bugatti in Dubai — that finish, on your car.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== INTERACTIVE GALLERY CAROUSEL ===== -->
+  <section style="background:#F5F4F6;padding:88px 0 88px">
+    <div class="bc-reveal" data-reveal style="max-width:1180px;margin:0 auto;padding:0 24px;display:flex;align-items:flex-end;justify-content:space-between;gap:20px;margin-bottom:36px">
+      <div>
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">OUR WORK</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,44px);line-height:1.08;letter-spacing:-0.01em;color:#0A0A0C">Recent installs</h2>
+      </div>
+      <div style="display:flex;gap:10px">
+        <button id="bcPrev" aria-label="Previous" class="bc-cta-btn" style="width:50px;height:50px;border-radius:50%;border:1px solid #E4E4E7;background:#fff;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#0A0A0C"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"></polyline></svg></button>
+        <button id="bcNext" aria-label="Next" class="bc-cta-btn" style="width:50px;height:50px;border-radius:50%;border:1px solid #C81878;background:#C81878;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"></polyline></svg></button>
+      </div>
+    </div>
+    <div id="bcTrack" class="bc-track" style="display:flex;gap:20px;overflow-x:auto;padding:6px 24px 24px;scroll-snap-type:x mandatory">
+      {work.map((w) => (
+        <div style="flex:0 0 380px;scroll-snap-align:start;border-radius:20px;overflow:hidden;background:#0A0A0C;box-shadow:0 20px 44px -24px rgba(0,0,0,.5);position:relative">
+          <div style={`aspect-ratio:4/3;background:${w.bg};position:relative;overflow:hidden`}>
+            <div style="position:absolute;inset:0;background:radial-gradient(110% 80% at 75% 15%,rgba(200,24,120,.28),transparent 58%)"></div>
+            <div style="position:absolute;left:0;bottom:0;width:100%;height:50%;background:linear-gradient(180deg,transparent,rgba(10,10,12,.7))"></div>
+            <span style="position:absolute;top:16px;left:16px;background:rgba(255,255,255,.95);color:#0A0A0C;font-size:11px;font-weight:700;letter-spacing:.05em;padding:6px 12px;border-radius:999px;text-transform:uppercase">{w.cat}</span>
+            <span style="position:absolute;left:18px;bottom:16px;color:#fff;font-family:'Poppins',sans-serif;font-weight:600;font-size:17px">{w.title}</span>
+            <span style="position:absolute;right:14px;bottom:14px;font-size:10.5px;color:#C81878;font-weight:600;border:1px dashed rgba(200,24,120,.5);padding:5px 10px;border-radius:6px;background:rgba(10,10,12,.4)">IMG · {w.ph}</span>
+          </div>
+        </div>
+      ))}
+      <a href={routes.gallery} style="flex:0 0 220px;scroll-snap-align:start;border-radius:20px;border:1.5px dashed rgba(200,24,120,.4);background:#fff;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;color:#C81878">
+        <div style="width:54px;height:54px;border-radius:50%;background:rgba(200,24,120,.1);display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></div>
+        <span style="font-weight:600;font-size:15px">View full gallery</span>
+      </a>
+    </div>
+    <p style="max-width:1180px;margin:0 auto;padding:0 24px;color:#71717A;font-size:13px;font-weight:400">Drag the row, or use the arrows. Real project photos coming soon.</p>
+  </section>
+
+  <!-- ===== CERAMIC VS CARBON ===== -->
+  <section style="background:#0A0A0C;color:#fff;padding:88px 24px">
+    <div class="bc-r-split" style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:52px;align-items:center">
+      <div class="bc-reveal" data-reveal>
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">CHOOSE YOUR FILM</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(28px,3.5vw,40px);line-height:1.1;letter-spacing:-0.01em;margin-bottom:16px">Ceramic vs Carbon — which is right for you?</h2>
+        <p style="color:#A8A5AC;font-size:16.5px;line-height:1.65;font-weight:400;margin-bottom:26px">Carbon looks great and blocks UV at a friendly price. Ceramic is the premium pick: maximum heat rejection with zero signal interference. We'll help you choose.</p>
+        <a href={routes.ceramicVsCarbon} style="color:#C81878;font-weight:600;font-size:15.5px;display:inline-flex;align-items:center;gap:9px">Read the full comparison <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div class="bc-reveal" data-reveal style="background:linear-gradient(180deg,#16161a,#101013);border:1px solid rgba(255,255,255,0.1);border-radius:18px;overflow:hidden">
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;background:rgba(0,0,0,.4);font-size:13px;font-weight:600">
+          <div style="padding:16px 18px"></div>
+          <div style="padding:16px 12px;text-align:center;color:#A8A5AC">Carbon</div>
+          <div style="padding:16px 12px;text-align:center;color:#C81878">Ceramic</div>
+        </div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.06);font-size:14px"><div style="padding:15px 18px;color:#D4D4D8">Heat rejection</div><div style="padding:15px 12px;text-align:center;color:#71717A">Good</div><div style="padding:15px 12px;text-align:center;font-weight:700;color:#fff">Best</div></div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.06);font-size:14px"><div style="padding:15px 18px;color:#D4D4D8">Signal-safe</div><div style="padding:15px 12px;text-align:center;color:#71717A">Yes</div><div style="padding:15px 12px;text-align:center;font-weight:700;color:#fff">Yes</div></div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.06);font-size:14px"><div style="padding:15px 18px;color:#D4D4D8">Warranty</div><div style="padding:15px 12px;text-align:center;color:#71717A">5 yrs</div><div style="padding:15px 12px;text-align:center;font-weight:700;color:#fff">Lifetime</div></div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.06);font-size:14px"><div style="padding:15px 18px;color:#D4D4D8">Price</div><div style="padding:15px 12px;text-align:center;color:#71717A">$$</div><div style="padding:15px 12px;text-align:center;font-weight:700;color:#fff">$$$</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== LEGAL TEASER ===== -->
+  <section style="background:#111114;color:#fff;padding:78px 24px;border-top:1px solid rgba(255,255,255,.05)">
+    <div class="bc-reveal bc-r-stack" data-reveal style="max-width:1180px;margin:0 auto;display:flex;gap:48px;align-items:center;justify-content:space-between;flex-wrap:wrap">
+      <div style="max-width:540px">
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">KNOW THE LAW</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(28px,3.5vw,38px);line-height:1.12;margin-bottom:16px">Is window tint legal in Florida?</h2>
+        <p style="color:#A8A5AC;font-size:16.5px;line-height:1.65;font-weight:400;margin-bottom:26px">Front side windows must stay at 28% VLT or lighter; sedan rears at 15%. We install to spec so you stay legal — here's the full breakdown for 2026.</p>
+        <a href={routes.floridaLaws} class="bc-cta-btn" style="background:#C81878;color:#fff;font-weight:700;font-size:15px;padding:15px 26px;border-radius:10px;display:inline-flex;align-items:center;gap:9px">Read Florida tint laws <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div style="display:flex;gap:16px">
+        <div style="text-align:center;border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:28px 32px;background:linear-gradient(180deg,#16161a,#101013)"><div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:42px;color:#C81878">28%</div><div style="font-size:13px;color:#A8A5AC;margin-top:6px;font-weight:500">front sides</div></div>
+        <div style="text-align:center;border:1px solid rgba(255,255,255,0.12);border-radius:16px;padding:28px 32px;background:linear-gradient(180deg,#16161a,#101013)"><div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:42px;color:#fff">15%</div><div style="font-size:13px;color:#A8A5AC;margin-top:6px;font-weight:500">sedan rear</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== AREAS ===== -->
+  <section style="background:#F5F4F6;padding:84px 24px">
+    <div class="bc-reveal" data-reveal style="max-width:1180px;margin:0 auto;text-align:center">
+      <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">AREAS WE SERVE</div>
+      <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,44px);line-height:1.08;letter-spacing:-0.01em;margin-bottom:12px;color:#0A0A0C">Serving Jacksonville &amp; NE Florida</h2>
+      <p style="color:#52525B;font-size:16px;line-height:1.6;font-weight:400;max-width:540px;margin:0 auto 34px">100% mobile — we come to you across the First Coast.</p>
+      <div style="display:flex;flex-wrap:wrap;gap:11px;justify-content:center;max-width:840px;margin:0 auto">
+        {homeAreas.map((a) => (
+          <a href={routes.serviceAreas} class="bc-zone" style="border:1px solid #E4E4E7;border-radius:999px;padding:11px 20px;font-size:14px;font-weight:500;color:#3F3F46;background:#fff">{a}</a>
+        ))}
+        <a href={routes.serviceAreas} style="border:1px solid #C81878;border-radius:999px;padding:11px 22px;font-size:14px;font-weight:600;color:#C81878;background:#fff;display:flex;align-items:center;gap:7px">All 18 areas <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== REVIEWS ===== -->
+  <section style="background:#0A0A0C;color:#fff;padding:88px 24px">
+    <div style="max-width:1180px;margin:0 auto">
+      <div class="bc-reveal" data-reveal style="text-align:center;margin-bottom:46px">
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">WHAT CUSTOMERS SAY</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,44px);line-height:1.08;letter-spacing:-0.01em">Reviews from the First Coast</h2>
+      </div>
+      <div class="bc-r-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:24px">
+        {reviews.map((r) => (
+          <div class="bc-reveal" data-reveal style="background:linear-gradient(180deg,#16161a,#101013);border:1px solid rgba(255,255,255,0.08);border-radius:18px;padding:30px 28px">
+            <div style="display:flex;gap:3px;margin-bottom:16px">
+              {[0, 1, 2, 3, 4].map(() => (
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="#C81878" stroke="none"><path d="m12 2 3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"></path></svg>
+              ))}
+            </div>
+            <p style="color:#D4D4D8;font-size:15px;line-height:1.65;font-weight:400;margin-bottom:22px">{r.text}</p>
+            <div style="display:flex;align-items:center;gap:12px">
+              <div style="width:40px;height:40px;border-radius:50%;background:linear-gradient(135deg,#C81878,#920A5A);display:flex;align-items:center;justify-content:center;font-weight:700;font-size:15px;color:#fff">{r.initial}</div>
+              <div><div style="font-weight:600;font-size:14px;color:#fff">{r.name}</div><div style="font-size:12.5px;color:#71717A">{r.where}</div></div>
+            </div>
+          </div>
+        ))}
+      </div>
+      <p style="text-align:center;color:#52525B;font-size:13px;margin-top:26px;font-weight:400">Sample reviews — your real Google &amp; Instagram reviews drop in here.</p>
+    </div>
+  </section>
+
+  <!-- ===== FAQ ===== -->
+  <FAQ items={faqs} eyebrow="FAQ" heading="Common questions" />
+
+  <!-- ===== CTA + FORM ===== -->
+  <section style="background:#0A0A0C;color:#fff;padding:90px 24px;position:relative;overflow:hidden">
+    <div style="position:absolute;bottom:-220px;left:-160px;width:600px;height:600px;border-radius:50%;background:radial-gradient(circle,rgba(200,24,120,0.26),transparent 62%);filter:blur(14px)"></div>
+    <div class="bc-r-split" style="position:relative;max-width:1080px;margin:0 auto;display:grid;grid-template-columns:1fr 0.92fr;gap:56px;align-items:center">
+      <div class="bc-reveal" data-reveal>
+        <div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;margin-bottom:18px"><span style="color:#fff">{site.slogan1}</span> <span style="color:#C81878">{site.slogan2}</span></div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(32px,4.4vw,50px);line-height:1.06;letter-spacing:-0.015em;margin-bottom:18px">Get your free quote today</h2>
+        <p style="color:#A8A5AC;font-size:17px;line-height:1.6;font-weight:400;max-width:440px;margin-bottom:28px">Tell us about your car, home or business and we'll get back to you fast.</p>
+        <a href={site.phoneHref} style="display:inline-flex;align-items:center;gap:11px;color:#fff;font-weight:600;font-size:19px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>{site.phone}</a>
+        <p style="color:#71717A;font-size:14px;margin-top:12px;font-weight:400">{site.email} · {site.instagram}</p>
+      </div>
+      <QuoteForm dark={true} />
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Draggable momentum carousel
+  const track = document.getElementById('bcTrack');
+  if (track) {
+    let down = false, startX = 0, startScroll = 0, moved = false;
+    let vel = 0, lastX = 0, raf: number | null = null;
+    const stopMomentum = () => { if (raf) { cancelAnimationFrame(raf); raf = null; } };
+    track.addEventListener('pointerdown', (e) => {
+      down = true; moved = false; startX = e.clientX; lastX = e.clientX; startScroll = track.scrollLeft; vel = 0;
+      stopMomentum(); track.classList.add('bc-grab');
+    });
+    track.addEventListener('pointermove', (e) => {
+      if (!down) return;
+      const dx = e.clientX - startX;
+      if (Math.abs(dx) > 4) moved = true;
+      track.scrollLeft = startScroll - dx;
+      vel = e.clientX - lastX; lastX = e.clientX;
+    });
+    const release = () => {
+      if (!down) return;
+      down = false; track.classList.remove('bc-grab');
+      let v = vel;
+      const momentum = () => {
+        if (Math.abs(v) < 0.4) { raf = null; return; }
+        track.scrollLeft -= v; v *= 0.93; raf = requestAnimationFrame(momentum);
+      };
+      if (Math.abs(v) > 1) raf = requestAnimationFrame(momentum);
+    };
+    track.addEventListener('pointerup', release);
+    track.addEventListener('pointerleave', release);
+    track.addEventListener('click', (e) => { if (moved) { e.preventDefault(); e.stopPropagation(); } }, true);
+    const step = 400;
+    document.getElementById('bcPrev')?.addEventListener('click', () => { stopMomentum(); track.scrollBy({ left: -step, behavior: 'smooth' }); });
+    document.getElementById('bcNext')?.addEventListener('click', () => { stopMomentum(); track.scrollBy({ left: step, behavior: 'smooth' }); });
+  }
+</script>

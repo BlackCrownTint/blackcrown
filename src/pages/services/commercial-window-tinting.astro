@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTASection from '../../components/CTASection.astro';
+import { routes, site } from '../../data/site';
+
+const title = 'Commercial Window Tinting Jacksonville | Black Crown Tint';
+const description =
+  'Commercial window tinting in Jacksonville, FL. 3M solar, security and decorative film cuts A/C costs, protects interiors and adds privacy. Free commercial quote.';
+
+const benefits = [
+  { t: 'Cut A/C costs', d: 'Reject solar heat through large glass to ease the load on your HVAC and lower bills.', svg: '<path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"></path>' },
+  { t: 'Comfortable staff', d: 'Even temperatures and less glare on screens keep employees and customers comfortable.', svg: '<path d="M16 21v-2a4 4 0 0 0-4-4H6a4 4 0 0 0-4 4v2"></path><circle cx="9" cy="7" r="4"></circle><path d="M22 21v-2a4 4 0 0 0-3-3.87M16 3.13a4 4 0 0 1 0 7.75"></path>' },
+  { t: 'Protect interiors', d: 'Block 99% of UV to stop merchandise, displays and finishes from fading.', svg: '<path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"></path><path d="m9 12 2 2 4-4"></path>' },
+  { t: 'Security & safety', d: 'Safety film helps hold glass together against impact, storms and break-ins.', svg: '<path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"></path>' },
+  { t: 'Privacy', d: 'Frosted and one-way films for offices, conference rooms and street-level glass.', svg: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle><line x1="3" y1="3" x2="21" y2="21"></line>' },
+  { t: 'Branding', d: 'Decorative and frosted graphics for logos, privacy bands and storefront style.', svg: '<path d="M12 3l1.9 4.6 4.6.4-3.5 3 1.1 4.5L12 13.7 7.9 15.5 9 11 5.5 8l4.6-.4z"></path>' },
+];
+
+const solutions = [
+  ['Solar control', 'cut heat and glare through large windows and curtain walls.'],
+  ['Security & safety', 'hold glass together against impact and forced entry.'],
+  ['Decorative & branding', 'frosted graphics, logos and privacy bands.'],
+  ['Anti-graffiti', 'sacrificial film that protects glass from etching and tags.'],
+];
+
+const industries = ['Offices', 'Retail & storefronts', 'Restaurants', 'Warehouses', 'Medical & dental', 'Auto dealers', 'Schools'];
+
+const steps = [
+  { n: '01', t: 'Site walk', d: 'We assess your glass, goals and budget on site, around your hours.' },
+  { n: '02', t: 'Proposal', d: 'A clear quote with film options, scope and timeline — no surprises.' },
+  { n: '03', t: 'Install', d: 'After-hours or phased installs to keep your business running.' },
+  { n: '04', t: 'Warranty', d: 'Backed by warranty — lifetime on 3M ceramic, 5 years on carbon.' },
+];
+
+const faqs = [
+  { q: "What's the ROI on commercial window film?", a: "Solar film reduces heat gain through your glass, which lowers cooling costs and evens out hot and cold spots. The bigger your glass area and sun exposure, the faster it pays back. We'll estimate it during your site walk." },
+  { q: 'Can you install without closing our business?', a: 'Yes. We schedule after-hours or phase the work area by area so your operations keep running with minimal disruption.' },
+  { q: 'Do you offer security and safety film?', a: 'Yes. 3M safety film bonds to the glass so it holds together under impact — helpful against storms, accidents and break-ins. Ask us about thickness options for your risk profile.' },
+  { q: 'Is there a minimum job size?', a: "We handle everything from a single conference room to a full storefront or building. Reach out and we'll scope it." },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Commercial Window Tinting',
+    provider: { '@type': 'LocalBusiness', name: site.name, telephone: '+19048930927', areaServed: 'Jacksonville, FL' },
+    areaServed: 'Jacksonville, FL and Northeast Florida',
+    url: site.url + routes.commercial,
+    description: 'Commercial 3M window film in Jacksonville, FL — solar control, security/safety, decorative branding and anti-graffiti film.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <!-- HERO -->
+  <section style="position:relative;background:#0A0A0C;color:#fff;overflow:hidden">
+    <div style="position:absolute;top:-200px;right:-160px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(200,24,120,0.3),transparent 62%);filter:blur(20px);pointer-events:none"></div>
+    <div class="bc-r-hero" style="position:relative;max-width:1180px;margin:0 auto;padding:60px 24px 64px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:54px;align-items:center">
+      <div>
+        <Breadcrumb items={[{ label: 'Home', href: routes.home }, { label: 'Commercial Window Tinting' }]} />
+        <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(36px,5vw,58px);line-height:1.03;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:22px">Commercial<br>Window Tinting</h1>
+        <p style="font-size:18.5px;line-height:1.6;color:#A8A5AC;max-width:500px;font-weight:400">Lower cooling costs, keep staff and customers comfortable, and protect your space — from offices to storefronts across Jacksonville.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:32px">
+          <a href={routes.contact} data-magnetic class="bc-cta-btn" style="background:#C81878;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;padding:16px 30px;border-radius:10px;display:flex;align-items:center;gap:10px">Request a commercial quote <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <a href={site.phoneHref} class="bc-ghost" style="border:1px solid rgba(255,255,255,0.22);color:#fff;font-weight:600;font-size:15.5px;padding:16px 28px;border-radius:10px;display:flex;align-items:center;gap:10px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>{site.phone}</a>
+        </div>
+      </div>
+      <div style="position:relative;aspect-ratio:5/4;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);box-shadow:0 40px 80px -30px rgba(0,0,0,.8);background:linear-gradient(160deg,#191921,#1c1622);animation:bcFloat 7s ease-in-out infinite">
+        <div style="position:absolute;inset:0;background:radial-gradient(120% 90% at 80% 12%,rgba(200,24,120,.24),transparent 56%)"></div>
+        <div style="position:absolute;left:10%;top:18%;right:10%;bottom:0;display:flex;gap:10px;align-items:flex-end"><div style="flex:1;height:80%;border-radius:8px 8px 0 0;background:linear-gradient(180deg,rgba(255,255,255,.1),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.12);border-bottom:none"></div><div style="flex:1;height:64%;border-radius:8px 8px 0 0;background:linear-gradient(180deg,rgba(255,255,255,.07),rgba(255,255,255,.01));border:1px solid rgba(255,255,255,.1);border-bottom:none"></div><div style="flex:1;height:92%;border-radius:8px 8px 0 0;background:linear-gradient(180deg,rgba(255,255,255,.09),rgba(255,255,255,.02));border:1px solid rgba(255,255,255,.11);border-bottom:none"></div></div>
+        <div style="position:absolute;top:18px;left:18px;width:50px;height:50px;border-radius:14px;background:rgba(255,255,255,.95);display:flex;align-items:center;justify-content:center;box-shadow:0 10px 24px -8px rgba(200,24,120,.5)"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18" rx="1.5"></rect><path d="M8 7h.01M12 7h.01M16 7h.01M8 11h.01M12 11h.01M16 11h.01M10 21v-4h4v4"></path></svg></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section style="background:#F5F4F6;padding:88px 24px">
+    <div style="max-width:1180px;margin:0 auto">
+      <div class="bc-reveal" data-reveal style="max-width:600px;margin-bottom:48px">
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">BENEFITS FOR YOUR BUSINESS</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,44px);line-height:1.08;letter-spacing:-0.01em;color:#0A0A0C">A fast return on a simple upgrade</h2>
+      </div>
+      <div class="bc-r-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
+        {benefits.map((b) => (
+          <div class="bc-tile bc-reveal" data-tilt data-reveal style="background:#fff;border:1px solid #E4E4E7;border-radius:18px;padding:32px 28px"><div style="width:50px;height:50px;border-radius:14px;background:rgba(200,24,120,.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" set:html={b.svg}></svg></div><h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;margin-bottom:9px;color:#0A0A0C">{b.t}</h3><p style="color:#52525B;font-size:14.5px;line-height:1.6;font-weight:400">{b.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- SOLUTIONS / INDUSTRIES -->
+  <section style="background:#0A0A0C;color:#fff;padding:88px 24px">
+    <div class="bc-r-split" style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:start">
+      <div class="bc-reveal" data-reveal>
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">SOLUTIONS</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(26px,3.2vw,34px);line-height:1.12;margin-bottom:22px">3M films for every commercial need</h2>
+        <div style="display:flex;flex-direction:column;gap:14px">
+          {solutions.map(([t, d]) => (
+            <div style="display:flex;gap:13px;align-items:flex-start"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:2px"><polyline points="20 6 9 17 4 12"></polyline></svg><span style="color:#D4D4D8;font-size:15.5px;line-height:1.5"><strong style="font-weight:600">{t}</strong> — {d}</span></div>
+          ))}
+        </div>
+      </div>
+      <div class="bc-reveal" data-reveal>
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">INDUSTRIES WE SERVE</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(26px,3.2vw,34px);line-height:1.12;margin-bottom:22px">From offices to restaurants</h2>
+        <div style="display:flex;flex-wrap:wrap;gap:11px">
+          {industries.map((i) => (
+            <span style="background:#141417;border:1px solid rgba(255,255,255,.12);border-radius:999px;padding:11px 19px;font-size:14px;font-weight:500;color:#D4D4D8">{i}</span>
+          ))}
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section style="background:#F5F4F6;padding:88px 24px">
+    <div style="max-width:1180px;margin:0 auto">
+      <div class="bc-reveal" data-reveal style="max-width:600px;margin-bottom:48px">
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">HOW IT WORKS</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,44px);line-height:1.08;letter-spacing:-0.01em;color:#0A0A0C">A commercial quote, on your schedule</h2>
+      </div>
+      <div class="bc-r-4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+        {steps.map((s) => (
+          <div class="bc-tile bc-reveal" data-tilt data-reveal style="background:#fff;border:1px solid #E4E4E7;border-radius:18px;padding:30px 24px"><div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:30px;color:#C81878;margin-bottom:12px">{s.n}</div><h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px;color:#0A0A0C">{s.t}</h3><p style="color:#52525B;font-size:14px;line-height:1.6;font-weight:400">{s.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqs} eyebrow="FAQ" heading="Commercial tint questions" dark={true} />
+
+  <CTASection bg="#111114" heading="Tint your business, cut your costs" sub="Get a commercial quote tailored to your space and schedule." ctaLabel="Request a commercial quote" />
+</BaseLayout>

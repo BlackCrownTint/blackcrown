@@ -1,0 +1,46 @@
+---
+// Interactive before/after tint slider (drag handle updates clip-path).
+// Used on Home and the Auto service page.
+---
+
+<div>
+  <div class="bc-slider" style="position:relative;aspect-ratio:4/3;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);box-shadow:0 40px 80px -30px rgba(0,0,0,.8),0 0 0 1px rgba(200,24,120,.12);user-select:none;touch-action:none;cursor:ew-resize;animation:bcFloat 7s ease-in-out infinite">
+    <div style="position:absolute;inset:0;background:linear-gradient(165deg,#bfe3ff 0%,#eaf4ff 38%,#fff7e6 64%,#ffe9b8 100%)">
+      <div style="position:absolute;top:14%;right:16%;width:96px;height:96px;border-radius:50%;background:radial-gradient(circle,#fffdf2 0%,#ffe79e 45%,rgba(255,221,128,0) 72%);box-shadow:0 0 70px 30px rgba(255,228,150,.8)"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(115deg,rgba(255,255,255,.5) 0%,transparent 32%)"></div>
+      <div style="position:absolute;left:0;bottom:0;width:100%;height:42%;background:linear-gradient(180deg,transparent,rgba(120,140,160,.35))"></div>
+      <div style="position:absolute;left:18px;top:16px;display:flex;align-items:center;gap:7px;background:rgba(15,23,42,.62);backdrop-filter:blur(4px);border-radius:999px;padding:7px 13px;font-size:11.5px;font-weight:600;color:#fff;letter-spacing:.04em"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#FFD27A" stroke-width="2.2" stroke-linecap="round"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"></path></svg>No tint · 50°C</div>
+    </div>
+    <div class="bc-slider-after" style="position:absolute;inset:0;clip-path:inset(0 45% 0 0);background:linear-gradient(165deg,#243246 0%,#1a2433 42%,#221a2a 72%,#2a1622 100%)">
+      <div style="position:absolute;top:14%;right:16%;width:96px;height:96px;border-radius:50%;background:radial-gradient(circle,rgba(255,253,242,.5) 0%,rgba(255,231,158,.18) 45%,transparent 72%)"></div>
+      <div style="position:absolute;inset:0;background:linear-gradient(135deg,rgba(200,24,120,.12),transparent 55%)"></div>
+      <div style="position:absolute;left:0;bottom:0;width:100%;height:42%;background:linear-gradient(180deg,transparent,rgba(10,10,12,.5))"></div>
+      <div style="position:absolute;right:18px;top:16px;display:flex;align-items:center;gap:7px;background:rgba(200,24,120,.85);backdrop-filter:blur(4px);border-radius:999px;padding:7px 13px;font-size:11.5px;font-weight:600;color:#fff;letter-spacing:.04em"><svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"></path></svg>3M Ceramic · 28°C</div>
+    </div>
+    <div class="bc-slider-handle" style="position:absolute;top:0;bottom:0;left:55%;width:2px;background:rgba(255,255,255,.9);box-shadow:0 0 18px rgba(200,24,120,.7);transform:translateX(-1px)">
+      <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:46px;height:46px;border-radius:50%;background:#fff;box-shadow:0 6px 20px rgba(0,0,0,.4);display:flex;align-items:center;justify-content:center"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="10 8 6 12 10 16"></polyline><polyline points="14 8 18 12 14 16"></polyline></svg></div>
+    </div>
+  </div>
+  <div style="display:flex;align-items:center;justify-content:center;gap:8px;margin-top:14px;color:#71717A;font-size:12.5px;font-weight:500"><svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 3 12 9 6"></polyline><polyline points="15 6 21 12 15 18"></polyline></svg>Drag to see the difference</div>
+</div>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.bc-slider').forEach((wrap) => {
+    const after = wrap.querySelector<HTMLElement>('.bc-slider-after');
+    const handle = wrap.querySelector<HTMLElement>('.bc-slider-handle');
+    if (!after || !handle) return;
+    let dragging = false;
+    const setPos = (clientX: number) => {
+      const r = wrap.getBoundingClientRect();
+      let p = (clientX - r.left) / r.width;
+      p = Math.max(0.04, Math.min(0.96, p));
+      const pct = p * 100;
+      after.style.clipPath = 'inset(0 ' + (100 - pct) + '% 0 0)';
+      handle.style.left = pct + '%';
+    };
+    wrap.addEventListener('pointerdown', (e) => { dragging = true; wrap.setPointerCapture(e.pointerId); setPos(e.clientX); });
+    wrap.addEventListener('pointermove', (e) => { if (dragging) setPos(e.clientX); });
+    wrap.addEventListener('pointerup', () => { dragging = false; });
+    wrap.addEventListener('pointercancel', () => { dragging = false; });
+  });
+</script>
