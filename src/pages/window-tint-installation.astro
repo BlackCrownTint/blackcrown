@@ -1,0 +1,113 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import FAQ from '../components/FAQ.astro';
+import CTASection from '../components/CTASection.astro';
+import { routes, site } from '../data/site';
+
+const title = 'Window Tint Installation: Step by Step | Black Crown Tint';
+const description =
+  'How professional window tint installation works — the 5-step process, how long it takes, curing time and aftercare so your film lasts for years.';
+
+const steps = [
+  { n: '01', title: 'Free quote & film choice', body: "We assess your vehicle, recommend the right film and shade for your goals and Florida's legal limits, and give you an honest price." },
+  { n: '02', title: 'Deep clean & decontamination', body: 'Every window is cleaned inside and the glass is decontaminated. Dust and debris are the enemy of a flawless install — this step is where quality is won.' },
+  { n: '03', title: 'Precision cutting', body: 'Film is cut to each window — often computer-cut for a perfect pattern — so edges sit flush with no gaps or trimming on the glass.' },
+  { n: '04', title: 'Application & squeegee', body: 'Film is applied with a slip solution and worked from the center out, squeegeeing every bit of water and air for a clean, bubble-free bond.' },
+  { n: '05', title: 'Inspection & aftercare', body: 'We inspect every window, confirm it meets legal limits, and walk you through curing and care before you drive off.' },
+];
+
+const aftercare = [
+  'Leave windows up for 3–4 days while the film bonds.',
+  "Don't panic over slight haze or tiny bubbles — they clear as it dries.",
+  'Wait a few days, then clean with a soft cloth and ammonia-free cleaner.',
+  'Avoid scrubbing edges; never use abrasive pads or razor blades.',
+];
+
+const faqs = [
+  { q: 'Can I drive right after the install?', a: 'Yes — you can drive immediately. Just leave your windows up for 3–4 days while the film bonds to the glass.' },
+  { q: 'Why does my tint look hazy or have small bubbles?', a: "That's normal during curing. Trapped moisture causes slight haze or tiny water pockets that disappear over 3–7 days as the film dries — faster in Florida's warm weather." },
+  { q: 'When can I clean my windows?', a: 'Wait until the film is fully cured (about a week), then clean with a soft microfiber cloth and an ammonia-free cleaner. Never use abrasive pads or razor blades.' },
+  { q: 'What if something looks wrong after curing?', a: "If anything isn't right once the film has cured, reach out — your install is backed by warranty and we'll make it right." },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Article',
+    headline: 'Window Tint Installation: Step by Step',
+    description,
+    author: { '@type': 'Organization', name: site.name },
+    publisher: { '@type': 'Organization', name: site.name, logo: { '@type': 'ImageObject', url: site.url + '/brand/logo-lockup.png' } },
+    mainEntityOfPage: site.url + routes.installation,
+    dateModified: '2026-01-01',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'HowTo',
+    name: 'How professional window tint is installed',
+    description: 'The five-step process for a flawless, long-lasting window tint installation.',
+    step: steps.map((s) => ({ '@type': 'HowToStep', name: s.title, text: s.body })),
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <!-- HERO -->
+  <section style="position:relative;background:#0A0A0C;color:#fff;overflow:hidden">
+    <div style="position:absolute;top:-200px;right:-160px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(200,24,120,0.28),transparent 62%);filter:blur(20px);pointer-events:none"></div>
+    <div style="position:relative;max-width:820px;margin:0 auto;padding:56px 24px 52px;text-align:center">
+      <div style="display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(200,24,120,0.4);border-radius:999px;padding:7px 15px;font-size:12px;font-weight:600;letter-spacing:0.05em;color:#fff;margin-bottom:22px;background:rgba(200,24,120,.1)"><span style="width:6px;height:6px;background:#C81878;border-radius:50%"></span>WHAT TO EXPECT</div>
+      <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(32px,4.6vw,52px);line-height:1.06;letter-spacing:-0.01em;margin-bottom:20px">Window Tint Installation:<br>Step by Step</h1>
+      <p style="font-size:18px;line-height:1.6;color:#A8A5AC;max-width:600px;margin:0 auto;font-weight:400">A clean tint job is mostly preparation and patience. Here's exactly how a professional install works — and how to care for your film while it cures so it lasts for years.</p>
+    </div>
+  </section>
+
+  <!-- STEPS -->
+  <section style="background:#F5F4F6;padding:80px 24px">
+    <div style="max-width:1020px;margin:0 auto">
+      <div class="bc-reveal" data-reveal style="text-align:center;max-width:600px;margin:0 auto 44px"><div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">THE INSTALL</div><h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(28px,3.5vw,40px);line-height:1.1;letter-spacing:-0.01em;color:#0A0A0C">Five steps to a flawless finish</h2></div>
+      <div style="display:flex;flex-direction:column;gap:16px">
+        {steps.map((s) => (
+          <div class="bc-tile bc-reveal" data-tilt data-reveal style="display:flex;gap:22px;align-items:flex-start;background:#fff;border:1px solid #E4E4E7;border-radius:18px;padding:28px 30px">
+            <div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:34px;color:#C81878;flex:none;width:54px;line-height:1">{s.n}</div>
+            <div><h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:19px;margin-bottom:8px;color:#0A0A0C">{s.title}</h3><p style="color:#52525B;font-size:15.5px;line-height:1.65;font-weight:400">{s.body}</p></div>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- HOW LONG -->
+  <section style="background:#0A0A0C;color:#fff;padding:80px 24px">
+    <div class="bc-r-3" style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <div class="bc-tile bc-reveal" data-tilt data-reveal style="border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:32px 28px;background:linear-gradient(180deg,#16161a,#101013);text-align:center"><div style="width:50px;height:50px;border-radius:14px;background:rgba(200,24,120,.14);display:flex;align-items:center;justify-content:center;margin:0 auto 18px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></div><div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:26px">A few hours</div><p style="color:#A8A5AC;font-size:14px;line-height:1.6;font-weight:400;margin-top:8px">Most full-vehicle installs are done the same day. Times vary by vehicle and film; we confirm yours when you book.</p></div>
+      <div class="bc-tile bc-reveal" data-tilt data-reveal style="border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:32px 28px;background:linear-gradient(180deg,#16161a,#101013);text-align:center"><div style="width:50px;height:50px;border-radius:14px;background:rgba(200,24,120,.14);display:flex;align-items:center;justify-content:center;margin:0 auto 18px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2v6M12 2 9 5M12 2l3 3"></path><path d="M5 12a7 7 0 0 0 14 0c0-3-2-5-7-10C7 7 5 9 5 12z"></path></svg></div><div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:26px">3–7 days</div><p style="color:#A8A5AC;font-size:14px;line-height:1.6;font-weight:400;margin-top:8px">Curing time. A little haze or tiny water bubbles are normal and clear as the film dries.</p></div>
+      <div class="bc-tile bc-reveal" data-tilt data-reveal style="border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:32px 28px;background:linear-gradient(180deg,#16161a,#101013);text-align:center"><div style="width:50px;height:50px;border-radius:14px;background:rgba(200,24,120,.14);display:flex;align-items:center;justify-content:center;margin:0 auto 18px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"></path><path d="m9 12 2 2 4-4"></path></svg></div><div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:26px">Lifetime</div><p style="color:#A8A5AC;font-size:14px;line-height:1.6;font-weight:400;margin-top:8px">Warranty on 3M ceramic (5 years on carbon) — your install is covered for the long haul.</p></div>
+    </div>
+  </section>
+
+  <!-- AFTERCARE -->
+  <section style="background:#111114;color:#fff;padding:84px 24px;border-top:1px solid rgba(255,255,255,.05)">
+    <div class="bc-r-split" style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:0.9fr 1.1fr;gap:52px;align-items:center">
+      <div class="bc-reveal" data-reveal>
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">AFTERCARE</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(26px,3.2vw,36px);line-height:1.1;margin-bottom:16px">Caring for your tint while it cures</h2>
+        <p style="color:#A8A5AC;font-size:16.5px;line-height:1.7;font-weight:400">Follow these simple rules for the first week and your film will cure clear and last for years. We'll hand you the same checklist when we finish.</p>
+      </div>
+      <div class="bc-reveal" data-reveal style="display:flex;flex-direction:column;gap:12px">
+        {aftercare.map((a) => (
+          <div style="display:flex;gap:13px;align-items:flex-start;background:#141417;border:1px solid rgba(255,255,255,.1);border-radius:12px;padding:16px 18px"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" style="flex:none;margin-top:1px"><polyline points="20 6 9 17 4 12"></polyline></svg><span style="color:#D4D4D8;font-size:15px;line-height:1.5">{a}</span></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqs} eyebrow="FAQ" heading="Installation questions" />
+
+  <CTASection heading="Ready to book your install?" sub="We're 100% mobile — we bring the install to you. Get a free quote today." />
+</BaseLayout>
