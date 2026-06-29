@@ -1,0 +1,116 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { site } from '../data/site';
+
+const title = 'Contact Black Crown Tint | Free Window Tint Quote';
+const description =
+  "Get a free window tint quote in Jacksonville, FL. Call or text (904) 893-0927, email us, or send the form. 100% mobile — we come to you.";
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'LocalBusiness',
+  '@id': site.url + '/#business',
+  name: site.name,
+  url: site.url,
+  email: site.email,
+  image: site.url + '/brand/logo-lockup.png',
+  areaServed: 'Jacksonville, FL and Northeast Florida',
+  address: { '@type': 'PostalAddress', addressLocality: 'Jacksonville', addressRegion: 'FL', addressCountry: 'US' },
+  sameAs: [site.instagramHref],
+  contactPoint: [
+    { '@type': 'ContactPoint', telephone: '+19048930927', contactType: 'sales', areaServed: 'US', availableLanguage: ['English', 'Spanish'] },
+    { '@type': 'ContactPoint', telephone: '+19047493655', contactType: 'sales', areaServed: 'US' },
+  ],
+};
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <!-- HERO + FORM -->
+  <section style="position:relative;background:#0A0A0C;color:#fff;overflow:hidden">
+    <div style="position:absolute;top:-200px;right:-160px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(200,24,120,0.28),transparent 62%);filter:blur(20px);pointer-events:none"></div>
+    <div class="bc-r-hero" style="position:relative;max-width:1180px;margin:0 auto;padding:60px 24px 72px;display:grid;grid-template-columns:1fr 0.95fr;gap:56px;align-items:start">
+      <div style="padding-top:8px">
+        <div style="display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(200,24,120,0.45);border-radius:999px;padding:7px 15px;font-size:12px;font-weight:600;letter-spacing:0.05em;color:#fff;margin-bottom:24px;background:rgba(200,24,120,.1)"><span style="width:6px;height:6px;background:#C81878;border-radius:50%"></span>FAST, FREE QUOTES</div>
+        <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(34px,4.8vw,54px);line-height:1.04;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:20px">Get a Free<br>Tint Quote</h1>
+        <p style="font-size:18px;line-height:1.6;color:#A8A5AC;max-width:460px;font-weight:400;margin-bottom:34px">Tell us about your car, home or business. We're 100% mobile — we'll recommend the right 3M film and come to you.</p>
+        <div style="display:flex;flex-direction:column;gap:14px;max-width:440px">
+          <a href={site.phoneHref} class="bc-tile" style="display:flex;align-items:center;gap:16px;border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 20px;background:linear-gradient(180deg,#16161a,#101013)">
+            <div style="width:44px;height:44px;border-radius:12px;background:rgba(200,24,120,.16);display:flex;align-items:center;justify-content:center;flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg></div>
+            <div><div style="font-size:12px;color:#71717A;font-weight:600;letter-spacing:0.06em">CALL OR TEXT</div><div style="font-weight:700;font-size:17px;color:#fff;margin-top:2px">{site.phone}</div><div style="font-size:12.5px;color:#A8A5AC;margin-top:1px">Camilo · also {site.phoneAlt} (Marco)</div></div>
+          </a>
+          <a href={site.emailHref} class="bc-tile" style="display:flex;align-items:center;gap:16px;border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 20px;background:linear-gradient(180deg,#16161a,#101013)">
+            <div style="width:44px;height:44px;border-radius:12px;background:rgba(200,24,120,.16);display:flex;align-items:center;justify-content:center;flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="4" width="20" height="16" rx="2"></rect><path d="m22 7-10 5L2 7"></path></svg></div>
+            <div><div style="font-size:12px;color:#71717A;font-weight:600;letter-spacing:0.06em">EMAIL</div><div style="font-weight:700;font-size:17px;color:#fff;margin-top:2px">{site.email}</div></div>
+          </a>
+          <a href={site.instagramHref} class="bc-tile" style="display:flex;align-items:center;gap:16px;border:1px solid rgba(255,255,255,0.1);border-radius:16px;padding:18px 20px;background:linear-gradient(180deg,#16161a,#101013)">
+            <div style="width:44px;height:44px;border-radius:12px;background:rgba(200,24,120,.16);display:flex;align-items:center;justify-content:center;flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"></rect><circle cx="12" cy="12" r="4"></circle><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg></div>
+            <div><div style="font-size:12px;color:#71717A;font-weight:600;letter-spacing:0.06em">INSTAGRAM</div><div style="font-weight:700;font-size:17px;color:#fff;margin-top:2px">{site.instagram}</div></div>
+          </a>
+        </div>
+      </div>
+
+      <form id="bcContactForm" style="background:#fff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:15px;box-shadow:0 40px 80px -30px rgba(0,0,0,0.9)">
+        <div><div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;color:#0A0A0C">Request your quote</div><div style="font-size:13.5px;color:#71717A;margin-top:4px">We reply within business hours.</div></div>
+        <div id="bcContactOk" style="display:none;background:#FBEAF3;border:1px solid #F3C6DF;border-radius:11px;padding:14px 16px;color:#920A5A;font-size:14px;font-weight:500;align-items:center;gap:10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Thanks — your request was sent. (Demo: connect to email/CRM before launch.)</div>
+        <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:13px;font-weight:600;color:#3F3F46">Name</span><input required name="name" placeholder="Your name" class="bc-input" style="background:#F5F4F6;border:1px solid #E4E4E7;border-radius:11px;padding:13px 15px;color:#0A0A0C;font-size:15px;outline:none;transition:border-color .2s"></label>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:13px">
+          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:13px;font-weight:600;color:#3F3F46">Phone</span><input required name="phone" placeholder="(904) 000-0000" class="bc-input" style="background:#F5F4F6;border:1px solid #E4E4E7;border-radius:11px;padding:13px 15px;color:#0A0A0C;font-size:15px;outline:none;transition:border-color .2s"></label>
+          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:13px;font-weight:600;color:#3F3F46">Email</span><input type="email" name="email" placeholder="you@email.com" class="bc-input" style="background:#F5F4F6;border:1px solid #E4E4E7;border-radius:11px;padding:13px 15px;color:#0A0A0C;font-size:15px;outline:none;transition:border-color .2s"></label>
+        </div>
+        <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:13px;font-weight:600;color:#3F3F46">Service</span><select name="service" class="bc-input" style="background:#F5F4F6;border:1px solid #E4E4E7;border-radius:11px;padding:13px 15px;color:#0A0A0C;font-size:15px;outline:none;transition:border-color .2s"><option>Auto window tinting</option><option>Residential window tinting</option><option>Commercial window tinting</option><option>Ceramic tint</option><option>Not sure — help me choose</option></select></label>
+        <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:13px;font-weight:600;color:#3F3F46">Details <span style="color:#A8A5AC;font-weight:400">(optional)</span></span><textarea rows="3" name="details" placeholder="Vehicle year/make/model, or windows to cover" class="bc-input" style="background:#F5F4F6;border:1px solid #E4E4E7;border-radius:11px;padding:13px 15px;color:#0A0A0C;font-size:15px;outline:none;resize:vertical;transition:border-color .2s"></textarea></label>
+        <button type="submit" data-magnetic class="bc-cta-btn" style="background:#C81878;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;padding:15px;border:none;border-radius:11px;cursor:pointer;margin-top:4px">Request my free quote</button>
+        <p style="font-size:11.5px;color:#A8A5AC;text-align:center">By submitting you agree to be contacted about your quote. No spam.</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- MOBILE SERVICE + AREA -->
+  <section style="background:#F5F4F6;padding:80px 24px">
+    <div class="bc-r-split" style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:0.8fr 1.2fr;gap:40px;align-items:stretch">
+      <div class="bc-reveal" data-reveal style="border:1px solid #E4E4E7;border-radius:18px;padding:34px 32px;display:flex;flex-direction:column;justify-content:center;background:#fff">
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:18px">MOBILE SERVICE</div>
+        <div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #F4F4F5;font-size:15px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span style="color:#3F3F46">We come to you — no shop visit needed</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:11px 0;border-bottom:1px solid #F4F4F5;font-size:15px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span style="color:#3F3F46">By appointment, 7 days a week</span></div>
+        <div style="display:flex;align-items:center;gap:12px;padding:11px 0;font-size:15px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg><span style="color:#3F3F46">Driveway, office or anywhere convenient</span></div>
+        <div style="margin-top:22px;padding-top:20px;border-top:1px solid #F4F4F5"><div style="font-size:13px;color:#71717A;font-weight:600;letter-spacing:0.04em;margin-bottom:6px">SERVICE AREA</div><div style="font-size:15px;color:#3F3F46;line-height:1.5">Jacksonville &amp; Northeast Florida<br>from Yulee &amp; Fernandina to St. Augustine</div></div>
+        <div style="margin-top:18px;font-size:13px;color:#71717A;line-height:1.5">100% mobile — we bring the shop to you.</div>
+      </div>
+      <div class="bc-reveal" data-reveal style="border:1px solid #E4E4E7;border-radius:18px;overflow:hidden;min-height:340px;background:linear-gradient(160deg,#16161a,#1c1622);display:flex;align-items:center;justify-content:center;position:relative">
+        <div style="position:absolute;inset:0;background:radial-gradient(90% 80% at 70% 20%,rgba(200,24,120,.2),transparent 58%)"></div>
+        <div style="position:absolute;top:18px;left:18px;display:flex;align-items:center;gap:8px;background:#0A0A0C;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 13px;font-size:13px;font-weight:600;color:#fff"><img src="/brand/crown-magenta.png" style="height:16px;width:auto" alt="">Black Crown Tint</div>
+        <span style="position:relative;font-size:12px;color:#C81878;font-weight:600;letter-spacing:0.04em;border:1px dashed rgba(200,24,120,0.5);padding:8px 14px;border-radius:6px;background:rgba(10,10,12,0.4)">MAP · service-area map (Google Maps embed)</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST -->
+  <section style="background:#0A0A0C;color:#fff;padding:62px 24px">
+    <div class="bc-r-stack" style="max-width:1180px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap">
+      <div style="display:flex;align-items:center;gap:12px;font-size:15px;font-weight:500;color:#D4D4D8"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"></path><path d="m9 12 2 2 4-4"></path></svg>Licensed &amp; Insured</div>
+      <div style="display:flex;align-items:center;gap:12px;font-size:15px;font-weight:500;color:#D4D4D8"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"></path></svg>Lifetime ceramic warranty</div>
+      <div style="display:flex;align-items:center;gap:12px;font-size:15px;font-weight:500;color:#D4D4D8"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 2 7l10 5 10-5-10-5z"></path><path d="M2 17l10 5 10-5M2 12l10 5 10-5"></path></svg>Premium 3M films</div>
+      <div style="display:flex;align-items:center;gap:12px;font-size:15px;font-weight:500;color:#D4D4D8"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>Street-legal installs</div>
+    </div>
+  </section>
+</BaseLayout>
+
+<script>
+  // Demo only — wire to a real email/CRM endpoint before launch.
+  const form = document.getElementById('bcContactForm') as HTMLFormElement | null;
+  form?.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const ok = document.getElementById('bcContactOk');
+    if (ok) ok.style.display = 'flex';
+    try {
+      form.reset();
+    } catch {
+      /* no-op */
+    }
+  });
+  // Focus → magenta border on light inputs
+  document.querySelectorAll<HTMLElement>('.bc-input').forEach((el) => {
+    el.addEventListener('focus', () => (el.style.borderColor = '#C81878'));
+    el.addEventListener('blur', () => (el.style.borderColor = '#E4E4E7'));
+  });
+</script>

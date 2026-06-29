@@ -49,27 +49,30 @@ export const nav = [
   { label: 'About', href: routes.about },
 ];
 
-// 18 service-area zones. `slug` drives /service-areas/<slug>/.
+// 18 service-area zones. `slug` reserved for future per-zone pages.
+// Only zones with `page: true` have a dedicated landing page today (the
+// rest link to Contact — clone the zone template with unique 300+ word
+// copy before turning each into its own page, per the handoff).
 export const zones = [
-  { name: 'Jacksonville', slug: 'jacksonville' },
-  { name: 'Jacksonville Beach', slug: 'jacksonville-beach' },
-  { name: 'Orange Park', slug: 'orange-park' },
-  { name: 'St. Augustine', slug: 'st-augustine' },
-  { name: 'St. Johns', slug: 'st-johns' },
-  { name: 'Nocatee', slug: 'nocatee' },
-  { name: 'Ponte Vedra & Palm Valley', slug: 'ponte-vedra-palm-valley' },
-  { name: 'Fruit Cove', slug: 'fruit-cove' },
-  { name: 'World Golf Village', slug: 'world-golf-village' },
-  { name: 'Fleming Island', slug: 'fleming-island' },
-  { name: 'Middleburg', slug: 'middleburg' },
-  { name: 'Green Cove Springs', slug: 'green-cove-springs' },
-  { name: 'Penney Farms', slug: 'penney-farms' },
-  { name: 'Macclenny', slug: 'macclenny' },
-  { name: 'Callahan', slug: 'callahan' },
-  { name: 'Yulee', slug: 'yulee' },
-  { name: 'Fernandina Beach', slug: 'fernandina-beach' },
-  { name: 'Mayport', slug: 'mayport' },
-];
+  { name: 'Jacksonville', slug: 'jacksonville', county: 'Duval County' },
+  { name: 'Jacksonville Beach', slug: 'jacksonville-beach', county: 'The Beaches', page: true },
+  { name: 'Orange Park', slug: 'orange-park', county: 'Clay County' },
+  { name: 'St. Augustine', slug: 'st-augustine', county: 'St. Johns County' },
+  { name: 'St. Johns', slug: 'st-johns', county: 'St. Johns County' },
+  { name: 'Nocatee', slug: 'nocatee', county: 'Ponte Vedra area' },
+  { name: 'Ponte Vedra & Palm Valley', slug: 'ponte-vedra-palm-valley', county: 'Coastal St. Johns' },
+  { name: 'Fruit Cove', slug: 'fruit-cove', county: 'St. Johns County' },
+  { name: 'World Golf Village', slug: 'world-golf-village', county: 'St. Johns County' },
+  { name: 'Fleming Island', slug: 'fleming-island', county: 'Clay County' },
+  { name: 'Middleburg', slug: 'middleburg', county: 'Clay County' },
+  { name: 'Green Cove Springs', slug: 'green-cove-springs', county: 'Clay County' },
+  { name: 'Penney Farms', slug: 'penney-farms', county: 'Clay County' },
+  { name: 'Macclenny', slug: 'macclenny', county: 'Baker County' },
+  { name: 'Callahan', slug: 'callahan', county: 'Nassau County' },
+  { name: 'Yulee', slug: 'yulee', county: 'Nassau County' },
+  { name: 'Fernandina Beach', slug: 'fernandina-beach', county: 'Amelia Island' },
+  { name: 'Mayport', slug: 'mayport', county: 'The Beaches' },
+] as const;
 
 // Short list of areas shown as chips on the Home page.
 export const homeAreas = [

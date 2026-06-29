@@ -27,7 +27,7 @@ const okBg = dark ? 'rgba(200,24,120,.14)' : 'rgba(200,24,120,.08)';
   data-reveal
   style={`background:${cardBg};border:1px solid ${cardBorder};border-radius:20px;padding:30px;display:flex;flex-direction:column;gap:13px;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)`}
 >
-  <div class="bc-quote-ok" hidden style={`background:${okBg};border:1px solid rgba(200,24,120,.4);border-radius:11px;padding:14px 16px;color:${dark ? '#fff' : '#0A0A0C'};font-size:14px;font-weight:500;display:flex;align-items:center;gap:10px`}>
+  <div class="bc-quote-ok" style={`display:none;background:${okBg};border:1px solid rgba(200,24,120,.4);border-radius:11px;padding:14px 16px;color:${dark ? '#fff' : '#0A0A0C'};font-size:14px;font-weight:500;align-items:center;gap:10px`}>
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
     Thanks — we'll be in touch fast. (Demo form.)
   </div>
@@ -50,7 +50,7 @@ const okBg = dark ? 'rgba(200,24,120,.14)' : 'rgba(200,24,120,.08)';
     form.addEventListener('submit', (e) => {
       e.preventDefault();
       const ok = form.querySelector<HTMLElement>('.bc-quote-ok');
-      if (ok) ok.hidden = false;
+      if (ok) ok.style.display = 'flex';
       try {
         form.reset();
       } catch {
