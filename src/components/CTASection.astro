@@ -1,0 +1,36 @@
+---
+import { routes, site } from '../data/site';
+
+export interface Props {
+  heading?: string;
+  sub?: string;
+  /** Section background; alternate #111114 on some pages. */
+  bg?: string;
+  /** Primary button label. */
+  ctaLabel?: string;
+}
+
+const {
+  heading = 'Get your free quote today',
+  sub = "Tell us about your car, home or business and we'll get back to you fast — no pressure, no spam.",
+  bg = '#0A0A0C',
+  ctaLabel = 'Get a free quote',
+} = Astro.props;
+---
+
+<section style={`background:${bg};color:#fff;padding:90px 24px;position:relative;overflow:hidden`}>
+  <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);width:680px;height:680px;border-radius:50%;background:radial-gradient(circle,rgba(200,24,120,0.3),transparent 62%);filter:blur(20px);pointer-events:none"></div>
+  <div class="bc-reveal" data-reveal style="position:relative;max-width:720px;margin:0 auto;text-align:center">
+    <div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:15px;margin-bottom:18px"><span style="color:#fff">{site.slogan1}</span> <span style="color:#C81878">{site.slogan2}</span></div>
+    <h2 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(32px,4.4vw,50px);line-height:1.06;letter-spacing:-0.015em;margin-bottom:18px">{heading}</h2>
+    <p style="color:#A8A5AC;font-size:17px;line-height:1.6;font-weight:400;max-width:520px;margin:0 auto 30px">{sub}</p>
+    <div class="bc-r-stack" style="display:flex;flex-wrap:wrap;gap:13px;justify-content:center">
+      <a href={routes.contact} data-magnetic class="bc-cta-btn" style="background:#C81878;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;padding:16px 30px;border-radius:10px;display:flex;align-items:center;gap:10px">{ctaLabel}
+        <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
+      </a>
+      <a href={site.phoneHref} data-magnetic class="bc-ghost" style="border:1px solid rgba(255,255,255,0.22);color:#fff;font-weight:600;font-size:15.5px;padding:16px 28px;border-radius:10px;display:flex;align-items:center;gap:10px">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+        Call {site.phone}</a>
+    </div>
+  </div>
+</section>

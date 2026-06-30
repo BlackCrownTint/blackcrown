@@ -1,0 +1,61 @@
+---
+export interface Props {
+  /** Dark glass card (Home) vs light card (Contact). */
+  dark?: boolean;
+  withEmail?: boolean;
+  services?: string[];
+}
+
+const {
+  dark = true,
+  withEmail = false,
+  services = ['Service — Auto', 'Service — Residential', 'Service — Commercial', 'Service — Ceramic tint'],
+} = Astro.props;
+
+const cardBg = dark ? 'linear-gradient(180deg,#16161a,#101013)' : '#fff';
+const cardBorder = dark ? 'rgba(255,255,255,0.1)' : '#E4E4E7';
+const fieldBg = dark ? '#0A0A0C' : '#fff';
+const fieldBorder = dark ? 'rgba(255,255,255,0.14)' : '#E4E4E7';
+const fieldColor = dark ? '#fff' : '#0A0A0C';
+const selColor = dark ? '#A8A5AC' : '#52525B';
+const noteColor = dark ? '#52525B' : '#A8A5AC';
+const okBg = dark ? 'rgba(200,24,120,.14)' : 'rgba(200,24,120,.08)';
+---
+
+<form
+  class="bc-quote-form bc-reveal"
+  data-reveal
+  style={`background:${cardBg};border:1px solid ${cardBorder};border-radius:20px;padding:30px;display:flex;flex-direction:column;gap:13px;box-shadow:0 30px 60px -30px rgba(0,0,0,.8)`}
+>
+  <div class="bc-quote-ok" style={`display:none;background:${okBg};border:1px solid rgba(200,24,120,.4);border-radius:11px;padding:14px 16px;color:${dark ? '#fff' : '#0A0A0C'};font-size:14px;font-weight:500;align-items:center;gap:10px`}>
+    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>
+    Thanks — we'll be in touch fast. (Demo form.)
+  </div>
+  <input required name="name" placeholder="Your name" style={`background:${fieldBg};border:1px solid ${fieldBorder};border-radius:11px;padding:14px 16px;color:${fieldColor};font-size:15px;outline:none`} />
+  <input required name="phone" placeholder="Phone number" style={`background:${fieldBg};border:1px solid ${fieldBorder};border-radius:11px;padding:14px 16px;color:${fieldColor};font-size:15px;outline:none`} />
+  {withEmail && (
+    <input type="email" name="email" placeholder="Email address" style={`background:${fieldBg};border:1px solid ${fieldBorder};border-radius:11px;padding:14px 16px;color:${fieldColor};font-size:15px;outline:none`} />
+  )}
+  <select name="service" style={`background:${fieldBg};border:1px solid ${fieldBorder};border-radius:11px;padding:14px 16px;color:${selColor};font-size:15px;outline:none`}>
+    {services.map((s) => <option>{s}</option>)}
+  </select>
+  <textarea name="message" placeholder="Vehicle / message (optional)" rows="3" style={`background:${fieldBg};border:1px solid ${fieldBorder};border-radius:11px;padding:14px 16px;color:${fieldColor};font-size:15px;outline:none;resize:vertical`}></textarea>
+  <button type="submit" data-magnetic class="bc-cta-btn" style="background:#C81878;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;padding:16px;border:none;border-radius:11px;cursor:pointer">Request my free quote</button>
+  <p style={`font-size:11.5px;color:${noteColor};text-align:center;font-weight:400`}>No spam. We reply within business hours.</p>
+</form>
+
+<script>
+  // Demo only — wire to a real email/CRM endpoint before launch.
+  document.querySelectorAll<HTMLFormElement>('.bc-quote-form').forEach((form) => {
+    form.addEventListener('submit', (e) => {
+      e.preventDefault();
+      const ok = form.querySelector<HTMLElement>('.bc-quote-ok');
+      if (ok) ok.style.display = 'flex';
+      try {
+        form.reset();
+      } catch {
+        /* no-op */
+      }
+    });
+  });
+</script>

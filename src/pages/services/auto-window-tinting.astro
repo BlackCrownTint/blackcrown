@@ -1,0 +1,148 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import BeforeAfterSlider from '../../components/BeforeAfterSlider.astro';
+import FAQ from '../../components/FAQ.astro';
+import CTASection from '../../components/CTASection.astro';
+import { routes, site } from '../../data/site';
+
+const title = 'Auto Window Tinting Jacksonville | Black Crown Tint';
+const description =
+  'Auto window tinting in Jacksonville, FL. 3M ceramic & carbon film that beats the heat, blocks 99% of UV and keeps you legal. Lifetime warranty. Free quote.';
+
+const benefits = [
+  { t: 'Beats the heat', d: '3M ceramic rejects a large share of solar heat, so your A/C works less and the cabin stays cooler.', svg: '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"></path>' },
+  { t: 'Blocks 99% of UV', d: 'Protect your skin and stop your dash, seats and trim from fading and cracking in the sun.', svg: '<path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"></path><path d="m9 12 2 2 4-4"></path>' },
+  { t: 'Cuts glare', d: 'Less squinting at sunrise, sunset and off bright pavement — easier, safer driving.', svg: '<circle cx="12" cy="12" r="3"></circle><path d="M3 12s3-7 9-7 9 7 9 7M3 12s3 7 9 7M21 12l-2 2M19 9l2-2"></path>' },
+  { t: 'Adds privacy', d: 'Keep valuables out of sight and add a layer of security with darker rear glass.', svg: '<path d="M2 12s3.5-7 10-7 10 7 10 7-3.5 7-10 7-10-7-10-7z"></path><circle cx="12" cy="12" r="3"></circle><line x1="3" y1="3" x2="21" y2="21"></line>' },
+  { t: 'Protects interior', d: 'Slow down fading and keep resale value with film that shields leather and plastics.', svg: '<path d="M19 9V6a2 2 0 0 0-2-2H7a2 2 0 0 0-2 2v3M5 9h14a2 2 0 0 1 2 2v3a2 2 0 0 1-2 2v2H5v-2a2 2 0 0 1-2-2v-3a2 2 0 0 1 2-2z"></path>' },
+  { t: 'Clean, sharp look', d: 'Factory-flush edges and a uniform shade that finishes the look of any vehicle.', svg: '<path d="M12 3l1.9 4.6 4.6.4-3.5 3 1.1 4.5L12 13.7 7.9 15.5 9 11 5.5 8l4.6-.4z"></path>' },
+];
+
+const steps = [
+  { n: '01', t: 'Free quote', d: 'Tell us your car and goals; we recommend film and shade and give you a price.' },
+  { n: '02', t: 'Prep & clean', d: 'Every window is cleaned and decontaminated so the film bonds flawlessly.' },
+  { n: '03', t: 'Precision install', d: 'Computer-cut film, hand-finished edges, no gaps — installed to legal limits.' },
+  { n: '04', t: 'Cure & warranty', d: 'Simple aftercare while it cures — backed by a lifetime 3M ceramic warranty.' },
+];
+
+const faqs = [
+  { q: 'How long does auto tint last?', a: "Quality 3M carbon and ceramic film lasts for years — it won't bubble or turn purple like cheap dyed film. Your install is backed by warranty: lifetime on ceramic, 5 years on carbon." },
+  { q: 'How long before I can roll my windows down?', a: "Give the film time to cure — usually a few days — before lowering your windows. We'll hand you simple aftercare instructions when we finish." },
+  { q: 'Will ceramic tint block my phone or GPS signal?', a: 'No. 3M ceramic film is non-metallic, so it won\'t interfere with GPS, cell, Bluetooth or keyless-entry signals while still rejecting the most heat.' },
+  { q: 'Is the tint you install legal in Florida?', a: "Yes. We install to Florida's legal limits — 28% on front side windows, 15% on sedan rears. If you need darker for a medical reason, Florida allows an exemption with a doctor's certificate." },
+  { q: 'How much does it cost?', a: 'It varies by vehicle, window count and film tier. The best way to get an exact, honest number is a quick free quote.' },
+];
+
+const jsonLd = [
+  {
+    '@context': 'https://schema.org',
+    '@type': 'Service',
+    serviceType: 'Auto Window Tinting',
+    provider: { '@type': 'LocalBusiness', name: site.name, telephone: '+19048930927', areaServed: 'Jacksonville, FL' },
+    areaServed: 'Jacksonville, FL and Northeast Florida',
+    url: site.url + routes.auto,
+    description: 'Professional 3M ceramic and carbon auto window tinting in Jacksonville, FL — installed to Florida legal limits with a lifetime warranty.',
+  },
+  {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+  },
+];
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <!-- HERO -->
+  <section style="position:relative;background:#0A0A0C;color:#fff;overflow:hidden">
+    <div style="position:absolute;top:-200px;right:-160px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(200,24,120,0.3),transparent 62%);filter:blur(20px);pointer-events:none"></div>
+    <div class="bc-r-hero" style="position:relative;max-width:1180px;margin:0 auto;padding:60px 24px 64px;display:grid;grid-template-columns:1fr 1.04fr;gap:54px;align-items:center">
+      <div>
+        <Breadcrumb items={[{ label: 'Home', href: routes.home }, { label: 'Auto Window Tinting' }]} />
+        <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(36px,5.2vw,60px);line-height:1.02;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:22px">Auto Window<br>Tinting</h1>
+        <p style="font-size:18.5px;line-height:1.6;color:#A8A5AC;max-width:500px;font-weight:400">Drop the cabin temperature, kill the glare and block 99% of UV — with a sharp, legal finish that lasts. 3M ceramic and carbon, installed wherever you are in Jacksonville.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:32px">
+          <a href={routes.contact} data-magnetic class="bc-cta-btn" style="background:#C81878;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;padding:16px 30px;border-radius:10px;display:flex;align-items:center;gap:10px">Get a free quote <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <a href={site.phoneHref} class="bc-ghost" style="border:1px solid rgba(255,255,255,0.22);color:#fff;font-weight:600;font-size:15.5px;padding:16px 28px;border-radius:10px;display:flex;align-items:center;gap:10px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>{site.phone}</a>
+        </div>
+      </div>
+      <BeforeAfterSlider />
+    </div>
+  </section>
+
+  <!-- BENEFITS -->
+  <section style="background:#F5F4F6;padding:88px 24px">
+    <div style="max-width:1180px;margin:0 auto">
+      <div class="bc-reveal" data-reveal style="max-width:600px;margin-bottom:48px">
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">BENEFITS OF AUTO TINT</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,44px);line-height:1.08;letter-spacing:-0.01em;color:#0A0A0C">More than just a darker look</h2>
+      </div>
+      <div class="bc-r-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:22px">
+        {benefits.map((b) => (
+          <div class="bc-tile bc-reveal" data-tilt data-reveal style="background:#fff;border:1px solid #E4E4E7;border-radius:18px;padding:32px 28px">
+            <div style="width:50px;height:50px;border-radius:14px;background:rgba(200,24,120,.1);display:flex;align-items:center;justify-content:center;margin-bottom:20px"><svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round" set:html={b.svg}></svg></div>
+            <h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;margin-bottom:9px;color:#0A0A0C">{b.t}</h3>
+            <p style="color:#52525B;font-size:14.5px;line-height:1.6;font-weight:400">{b.d}</p>
+          </div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <!-- FILMS -->
+  <section style="background:#0A0A0C;color:#fff;padding:88px 24px">
+    <div class="bc-r-split" style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:48px;align-items:center">
+      <div class="bc-reveal" data-reveal>
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">OUR FILMS</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(28px,3.5vw,40px);line-height:1.1;letter-spacing:-0.01em;margin-bottom:16px">3M ceramic or carbon for your car</h2>
+        <p style="color:#A8A5AC;font-size:16.5px;line-height:1.65;font-weight:400;margin-bottom:18px">Carbon film looks great, blocks UV and won't fade — a smart value. Ceramic is the premium tier: top heat rejection with no interference to GPS, phone or keyless signals. We install premium 3M film and help you pick the right shade.</p>
+        <a href={routes.ceramicVsCarbon} style="color:#C81878;font-weight:600;font-size:15.5px;display:inline-flex;align-items:center;gap:9px">Compare ceramic vs carbon <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div class="bc-reveal" data-reveal style="background:linear-gradient(180deg,#16161a,#101013);border:1px solid rgba(255,255,255,0.1);border-radius:18px;overflow:hidden">
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;background:rgba(0,0,0,.4);font-size:13px;font-weight:600"><div style="padding:16px 18px"></div><div style="padding:16px 12px;text-align:center;color:#A8A5AC">Carbon</div><div style="padding:16px 12px;text-align:center;color:#C81878">Ceramic</div></div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.06);font-size:14px"><div style="padding:15px 18px;color:#D4D4D8">Heat rejection</div><div style="padding:15px 12px;text-align:center;color:#71717A">Good</div><div style="padding:15px 12px;text-align:center;font-weight:700">Best</div></div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.06);font-size:14px"><div style="padding:15px 18px;color:#D4D4D8">Signal-safe</div><div style="padding:15px 12px;text-align:center;color:#71717A">Yes</div><div style="padding:15px 12px;text-align:center;font-weight:700">Yes</div></div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.06);font-size:14px"><div style="padding:15px 18px;color:#D4D4D8">Warranty</div><div style="padding:15px 12px;text-align:center;color:#71717A">5 yrs</div><div style="padding:15px 12px;text-align:center;font-weight:700">Lifetime</div></div>
+        <div style="display:grid;grid-template-columns:1.4fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.06);font-size:14px"><div style="padding:15px 18px;color:#D4D4D8">Price</div><div style="padding:15px 12px;text-align:center;color:#71717A">$$</div><div style="padding:15px 12px;text-align:center;font-weight:700">$$$</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- LEGAL -->
+  <section style="background:#111114;color:#fff;padding:84px 24px;border-top:1px solid rgba(255,255,255,.05)">
+    <div class="bc-r-split" style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:0.95fr 1.05fr;gap:52px;align-items:center">
+      <div class="bc-reveal" data-reveal>
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">IS IT LEGAL?</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(28px,3.5vw,40px);line-height:1.12;margin-bottom:16px">Florida tint limits for cars</h2>
+        <p style="color:#A8A5AC;font-size:16.5px;line-height:1.65;font-weight:400;margin-bottom:26px">We install every car to Florida's legal VLT limits so you don't risk a fix-it ticket. Want to go darker? Florida allows a medical exemption with a doctor's certificate.</p>
+        <a href={routes.floridaLaws} data-magnetic class="bc-cta-btn" style="background:#C81878;color:#fff;font-weight:700;font-size:15px;padding:15px 26px;border-radius:10px;display:inline-flex;align-items:center;gap:9px">Full Florida tint laws <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+      </div>
+      <div class="bc-reveal bc-r-table" data-reveal style="border:1px solid rgba(255,255,255,0.12);border-radius:18px;overflow:hidden;background:linear-gradient(180deg,#16161a,#101013)">
+        <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr;background:rgba(0,0,0,.4);color:#fff;font-size:12.5px;font-weight:600"><div style="padding:15px 18px"></div><div style="padding:15px 10px;text-align:center;color:#A8A5AC">Sedan</div><div style="padding:15px 10px;text-align:center;color:#A8A5AC">SUV / Van</div></div>
+        <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.06);font-size:14px"><div style="padding:15px 18px;color:#D4D4D8">Front sides</div><div style="padding:15px 10px;text-align:center;font-weight:700;color:#C81878">28%</div><div style="padding:15px 10px;text-align:center;font-weight:700;color:#C81878">28%</div></div>
+        <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.06);font-size:14px"><div style="padding:15px 18px;color:#D4D4D8">Back sides</div><div style="padding:15px 10px;text-align:center;font-weight:700">15%</div><div style="padding:15px 10px;text-align:center;font-weight:600;color:#A8A5AC">Any</div></div>
+        <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.06);font-size:14px"><div style="padding:15px 18px;color:#D4D4D8">Rear window</div><div style="padding:15px 10px;text-align:center;font-weight:700">15%</div><div style="padding:15px 10px;text-align:center;font-weight:600;color:#A8A5AC">Any</div></div>
+        <div style="display:grid;grid-template-columns:1.3fr 1fr 1fr;border-top:1px solid rgba(255,255,255,.06);font-size:14px"><div style="padding:15px 18px;color:#D4D4D8">Windshield</div><div style="padding:15px 10px;text-align:center;font-weight:500;color:#A8A5AC;grid-column:span 2">AS-1 strip, non-reflective</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section style="background:#F5F4F6;padding:88px 24px">
+    <div style="max-width:1180px;margin:0 auto">
+      <div class="bc-reveal" data-reveal style="max-width:600px;margin-bottom:48px">
+        <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">OUR PROCESS</div>
+        <h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,44px);line-height:1.08;letter-spacing:-0.01em;color:#0A0A0C">What to expect, start to finish</h2>
+      </div>
+      <div class="bc-r-4" style="display:grid;grid-template-columns:repeat(4,1fr);gap:20px">
+        {steps.map((s) => (
+          <div class="bc-tile bc-reveal" data-tilt data-reveal style="background:#fff;border:1px solid #E4E4E7;border-radius:18px;padding:30px 24px"><div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:30px;color:#C81878;margin-bottom:12px">{s.n}</div><h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:17px;margin-bottom:8px;color:#0A0A0C">{s.t}</h3><p style="color:#52525B;font-size:14px;line-height:1.6;font-weight:400">{s.d}</p></div>
+        ))}
+      </div>
+    </div>
+  </section>
+
+  <FAQ items={faqs} eyebrow="FAQ" heading="Auto tint questions" dark={true} />
+
+  <CTASection bg="#111114" heading="Ready to tint your car?" sub="Cooler, cleaner, legal and backed for life. Get your free quote today." />
+</BaseLayout>

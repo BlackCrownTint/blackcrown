@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import Breadcrumb from '../../components/Breadcrumb.astro';
+import CTASection from '../../components/CTASection.astro';
+import { routes, site, zones } from '../../data/site';
+
+const title = 'Service Areas | Mobile Window Tinting NE Florida';
+const description =
+  'Black Crown Tint serves 18 areas across Northeast Florida with 100% mobile window tinting — Jacksonville, the Beaches, St. Johns, Clay & Nassau counties.';
+
+const zoneHref = (z: (typeof zones)[number]) => (z.page ? `${routes.serviceAreas}${z.slug}/` : routes.contact);
+
+const jsonLd = {
+  '@context': 'https://schema.org',
+  '@type': 'ItemList',
+  name: 'Black Crown Tint — Service Areas',
+  itemListElement: zones.map((z, i) => ({
+    '@type': 'ListItem',
+    position: i + 1,
+    name: `${z.name}, FL`,
+  })),
+};
+---
+
+<BaseLayout title={title} description={description} jsonLd={jsonLd}>
+  <!-- HERO -->
+  <section style="position:relative;background:#0A0A0C;color:#fff;overflow:hidden">
+    <div style="position:absolute;top:-200px;right:-160px;width:640px;height:640px;border-radius:50%;background:radial-gradient(circle,rgba(200,24,120,0.3),transparent 62%);filter:blur(20px);pointer-events:none"></div>
+    <div class="bc-r-hero" style="position:relative;max-width:1180px;margin:0 auto;padding:60px 24px 56px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:54px;align-items:center">
+      <div>
+        <Breadcrumb items={[{ label: 'Home', href: routes.home }, { label: 'Service Areas' }]} />
+        <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(34px,4.8vw,56px);line-height:1.04;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:20px">Areas We Serve<br>in NE Florida</h1>
+        <p style="font-size:18.5px;line-height:1.6;color:#A8A5AC;max-width:500px;font-weight:400">Mobile window tinting across Northeast Florida — we come to you. Find your area below.</p>
+        <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:32px">
+          <a href={routes.contact} data-magnetic class="bc-cta-btn" style="background:#C81878;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;padding:16px 30px;border-radius:10px;display:flex;align-items:center;gap:10px">Get a free quote <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
+          <a href={site.phoneHref} class="bc-ghost" style="border:1px solid rgba(255,255,255,0.22);color:#fff;font-weight:600;font-size:15.5px;padding:16px 28px;border-radius:10px;display:flex;align-items:center;gap:10px"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>{site.phone}</a>
+        </div>
+      </div>
+      <div style="position:relative;aspect-ratio:5/4;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);box-shadow:0 40px 80px -30px rgba(0,0,0,.8);background:linear-gradient(160deg,#161a22,#1c1622)">
+        <div style="position:absolute;inset:0;background:radial-gradient(90% 80% at 70% 25%,rgba(200,24,120,.22),transparent 58%)"></div>
+        <div style="position:absolute;top:18px;left:18px;display:flex;align-items:center;gap:8px;background:#0A0A0C;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 13px;font-size:13px;font-weight:600;color:#fff"><img src="/brand/crown-magenta.png" style="height:16px;width:auto" alt="">Coverage map</div>
+        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:10px"><svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg><span style="font-size:12px;color:#C81878;font-weight:600;letter-spacing:0.04em;border:1px dashed rgba(200,24,120,0.5);padding:8px 14px;border-radius:6px;background:rgba(10,10,12,0.4)">MAP · NE Florida service area (embed)</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ZONES GRID -->
+  <section style="background:#F5F4F6;padding:80px 24px">
+    <div style="max-width:1180px;margin:0 auto">
+      <div class="bc-reveal" data-reveal style="text-align:center;max-width:600px;margin:0 auto 44px"><div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">18 AREAS · 100% MOBILE</div><h2 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(28px,3.5vw,40px);line-height:1.1;letter-spacing:-0.01em;color:#0A0A0C">We come to you</h2></div>
+      <div class="bc-r-3" style="display:grid;grid-template-columns:repeat(3,1fr);gap:16px">
+        {zones.map((z) => (
+          <a href={zoneHref(z)} class="bc-zone" style="display:flex;align-items:center;gap:14px;border:1px solid #E4E4E7;border-radius:14px;padding:18px 20px;background:#fff">
+            <div style="width:42px;height:42px;border-radius:11px;background:rgba(200,24,120,.1);display:flex;align-items:center;justify-content:center;flex:none"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path><circle cx="12" cy="10" r="3"></circle></svg></div>
+            <div style="flex:1"><div style="font-family:'Poppins',sans-serif;font-weight:600;font-size:16px;color:#0A0A0C">{z.name}</div><div style="font-size:12.5px;color:#71717A">{z.county}</div></div>
+            <span style="color:#A8A5AC;font-weight:700;font-size:18px">→</span>
+          </a>
+        ))}
+      </div>
+      <p class="bc-reveal" data-reveal style="text-align:center;color:#71717A;font-size:14px;margin-top:26px;font-weight:400">Don't see your town? We may still reach you — <a href={routes.contact} style="color:#C81878;font-weight:600">just ask</a>.</p>
+    </div>
+  </section>
+
+  <!-- WHY MOBILE -->
+  <section style="background:#0A0A0C;color:#fff;padding:84px 24px">
+    <div class="bc-r-3" style="max-width:1180px;margin:0 auto;display:grid;grid-template-columns:repeat(3,1fr);gap:20px">
+      <div class="bc-reveal" data-reveal style="border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:32px 28px;background:linear-gradient(180deg,#16161a,#101013)"><div style="width:48px;height:48px;border-radius:13px;background:rgba(200,24,120,.14);display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-1a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v1a2 2 0 0 1-2 2M7 17v2M17 17v2"></path></svg></div><h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;margin-bottom:9px">We come to you</h3><p style="color:#A8A5AC;font-size:14.5px;line-height:1.6;font-weight:400">No shop visit, no waiting room. We install at your home or office.</p></div>
+      <div class="bc-reveal" data-reveal style="border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:32px 28px;background:linear-gradient(180deg,#16161a,#101013)"><div style="width:48px;height:48px;border-radius:13px;background:rgba(200,24,120,.14);display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="9"></circle><path d="M12 7v5l3 2"></path></svg></div><h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;margin-bottom:9px">By appointment</h3><p style="color:#A8A5AC;font-size:14.5px;line-height:1.6;font-weight:400">Flexible scheduling, 7 days a week, around your day.</p></div>
+      <div class="bc-reveal" data-reveal style="border:1px solid rgba(255,255,255,0.1);border-radius:18px;padding:32px 28px;background:linear-gradient(180deg,#16161a,#101013)"><div style="width:48px;height:48px;border-radius:13px;background:rgba(200,24,120,.14);display:flex;align-items:center;justify-content:center;margin-bottom:18px"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.9" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"></path><path d="m9 12 2 2 4-4"></path></svg></div><h3 style="font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;margin-bottom:9px">Same premium quality</h3><p style="color:#A8A5AC;font-size:14.5px;line-height:1.6;font-weight:400">3M film, pro finish and full warranty — wherever we install.</p></div>
+    </div>
+  </section>
+
+  <CTASection bg="#111114" heading="In our service area? Let's tint it" sub="Tell us where you are and we'll bring the shop to you. Free quote." />
+</BaseLayout>

@@ -1,0 +1,74 @@
+---
+export interface FAQItem {
+  q: string;
+  a: string;
+}
+export interface Props {
+  items: FAQItem[];
+  eyebrow?: string;
+  heading?: string;
+  /** Dark section background instead of the default light. */
+  dark?: boolean;
+  bg?: string;
+}
+
+const { items, eyebrow = 'FAQ', heading = 'Common questions', dark = false, bg } = Astro.props;
+const sectionBg = bg ?? (dark ? '#0A0A0C' : '#F5F4F6');
+const headColor = dark ? '#FFFFFF' : '#0A0A0C';
+const cardBorder = dark ? 'rgba(255,255,255,0.1)' : '#E4E4E7';
+const cardBg = dark ? 'linear-gradient(180deg,#16161a,#101013)' : '#fff';
+const qColor = dark ? '#FFFFFF' : '#0A0A0C';
+const aColor = dark ? '#A8A5AC' : '#52525B';
+const icoBg = dark ? 'rgba(200,24,120,0.16)' : '#0A0A0C';
+---
+
+<section style={`background:${sectionBg};padding:88px 24px`}>
+  <div style="max-width:820px;margin:0 auto">
+    <div class="bc-reveal" data-reveal style="text-align:center;margin-bottom:46px">
+      <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.16em;color:#C81878;margin-bottom:14px">{eyebrow}</div>
+      <h2 style={`font-family:'Poppins',sans-serif;font-weight:700;font-size:clamp(30px,3.8vw,44px);line-height:1.08;letter-spacing:-0.01em;color:${headColor}`}>{heading}</h2>
+    </div>
+    <div class="bc-faq" style="display:flex;flex-direction:column;gap:12px">
+      {items.map((item) => (
+        <div class="bc-faq-item bc-reveal" data-reveal style={`border:1px solid ${cardBorder};border-radius:14px;overflow:hidden;background:${cardBg};box-shadow:0 8px 20px -16px rgba(0,0,0,.3)`}>
+          <button class="bc-faq-q" aria-expanded="false" style={`width:100%;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:22px 24px;background:none;border:none;cursor:pointer;text-align:left;font-family:'Poppins',sans-serif;font-weight:600;font-size:17px;color:${qColor}`}>
+            <span>{item.q}</span>
+            <span class="bc-faq-ico" style={`flex:none;width:30px;height:30px;border-radius:50%;background:${icoBg};color:#C81878;display:flex;align-items:center;justify-content:center;transition:transform .3s`}><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"></line><line x1="5" y1="12" x2="19" y2="12"></line></svg></span>
+          </button>
+          <div class="bc-faq-panel" style="max-height:0;overflow:hidden;transition:max-height .32s ease">
+            <p style={`padding:0 24px 24px;color:${aColor};font-size:15.5px;line-height:1.7;font-weight:400`}>{item.a}</p>
+          </div>
+        </div>
+      ))}
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('.bc-faq').forEach((group) => {
+    const items = Array.from(group.querySelectorAll<HTMLElement>('.bc-faq-item'));
+    items.forEach((item) => {
+      const btn = item.querySelector<HTMLButtonElement>('.bc-faq-q');
+      const panel = item.querySelector<HTMLElement>('.bc-faq-panel');
+      const ico = item.querySelector<HTMLElement>('.bc-faq-ico');
+      if (!btn || !panel || !ico) return;
+      btn.addEventListener('click', () => {
+        const isOpen = panel.style.maxHeight && panel.style.maxHeight !== '0px';
+        // close all (single-open behavior)
+        items.forEach((other) => {
+          const p = other.querySelector<HTMLElement>('.bc-faq-panel');
+          const i = other.querySelector<HTMLElement>('.bc-faq-ico');
+          const b = other.querySelector<HTMLButtonElement>('.bc-faq-q');
+          if (p) p.style.maxHeight = '0px';
+          if (i) i.style.transform = 'rotate(0deg)';
+          if (b) b.setAttribute('aria-expanded', 'false');
+        });
+        if (!isOpen) {
+          panel.style.maxHeight = panel.scrollHeight + 'px';
+          ico.style.transform = 'rotate(45deg)';
+          btn.setAttribute('aria-expanded', 'true');
+        }
+      });
+    });
+  });
+</script>
