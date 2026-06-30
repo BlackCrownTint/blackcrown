@@ -116,6 +116,9 @@ html.js .bc-reveal.bc-in { opacity: 1; transform: none; }
   .bc-head nav.bc-desktop-nav { display: none !important; }
   .bc-burger { display: flex; }
   .bc-head { gap: 10px; padding-left: 14px; }
+  /* Free Quote CTA is redundant on mobile (it's in the drawer) — drop it so the
+     logo + call icon + hamburger fit inside the bar. */
+  .bc-head-cta { display: none !important; }
 }
 
 /* mobile drawer */
@@ -150,6 +153,9 @@ body.bc-nav-open { overflow: hidden; }
 @media (max-width: 980px) {
   .bc-r-hero, .bc-r-split { grid-template-columns: 1fr !important; gap: 40px !important; }
   .bc-r-3, .bc-r-4 { grid-template-columns: repeat(2, 1fr) !important; }
+  /* Let grid children shrink below their intrinsic min-content so wide cards,
+     tables and forms never push the layout past the viewport. */
+  .bc-r-hero > *, .bc-r-split > *, .bc-r-2 > *, .bc-r-3 > *, .bc-r-4 > * { min-width: 0; }
 }
 @media (max-width: 720px) {
   .bc-r-2 { grid-template-columns: 1fr !important; }
@@ -158,6 +164,9 @@ body.bc-nav-open { overflow: hidden; }
   .bc-r-stack { flex-direction: column !important; align-items: flex-start !important; }
   section { padding-left: 18px !important; padding-right: 18px !important; }
 }
+
+/* Form fields must never exceed their container on small screens. */
+input, select, textarea { max-width: 100%; }
 
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
