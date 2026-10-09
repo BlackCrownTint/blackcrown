@@ -24,7 +24,7 @@ const colorRules = [
 ];
 
 const faqs = [
-  { q: 'How dark can you legally tint in Florida?', a: 'On the front side windows you must keep at least 28% VLT. Sedans must keep 15% or more on the back side and rear windows, while SUVs and vans can go any darkness on the back glass. The windshield can only have a non-reflective strip above the AS-1 line.' },
+  { q: 'How dark can you legally tint in Florida?', a: 'On the front side windows you must keep at least 28% VLT. Sedans must keep 15% or more on the back side and rear windows, while qualifying multipurpose passenger vehicles must keep at least 6% on the back glass. The windshield can only have a non-reflective strip above the AS-1 line.' },
   { q: 'Is 20% tint legal in Florida?', a: '20% is legal on the back side and rear windows of a sedan (the limit there is 15%), and on any rear window of an SUV or van. It is not legal on the front side windows, which must stay at 28% or lighter.' },
   { q: 'Can I get a ticket for illegal tint?', a: "Yes. Illegal tint is a noncriminal traffic infraction in Florida, typically issued as a 'fix-it' ticket with a fine around $100 for a first offense. You may be required to remove the film and re-tint to legal limits." },
   { q: 'Does Florida allow a medical tint exemption?', a: 'Yes. With a signed certificate from a licensed physician or optometrist — for a condition needing limited sun exposure — you can legally go darker than the standard limits. Keep the certificate in your vehicle.' },
@@ -78,7 +78,7 @@ const jsonLd = [
   <section style="background:#111114;border-top:1px solid rgba(200,24,120,0.2);border-bottom:1px solid rgba(255,255,255,0.05)">
     <div class="bc-r-stack" style="max-width:1180px;margin:0 auto;padding:34px 24px;display:flex;gap:22px;align-items:flex-start">
       <div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:13px;letter-spacing:0.14em;color:#C81878;flex:none;padding-top:3px">THE SHORT ANSWER</div>
-      <p style="color:#D4D4D8;font-size:17px;line-height:1.65;max-width:880px;font-weight:400">In Florida, your <strong style="color:#fff;font-weight:600">front side windows must let in more than 28% of light (VLT)</strong>. On sedans, back side and rear windows must allow <strong style="color:#fff;font-weight:600">more than 15%</strong>. SUVs and vans can have <strong style="color:#fff;font-weight:600">any darkness</strong> on the back glass. Windshields may only be tinted with a non-reflective strip above the AS-1 line.</p>
+      <p style="color:#D4D4D8;font-size:17px;line-height:1.65;max-width:880px;font-weight:400">In Florida, your <strong style="color:#fff;font-weight:600">front side windows must let in at least 28% of light (VLT)</strong>. On sedans, back side and rear windows must allow <strong style="color:#fff;font-weight:600">at least 15%</strong>. Qualifying multipurpose passenger vehicles must allow <strong style="color:#fff;font-weight:600">at least 6% VLT</strong> on the back glass. Windshields may only be tinted with a non-reflective strip above the AS-1 line.</p>
     </div>
   </section>
 
@@ -105,13 +105,17 @@ const jsonLd = [
           <div style="padding:8px 24px 20px">
             <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid #F4F4F5"><span style="color:#3F3F46;font-size:15px">Windshield</span><span style="font-family:'Poppins',sans-serif;font-weight:600;font-size:14px;color:#0A0A0C;text-align:right">Non-reflective<br><span style="font-size:12px;color:#71717A;font-weight:500">above AS-1 line</span></span></div>
             <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid #F4F4F5"><span style="color:#3F3F46;font-size:15px">Front side windows</span><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:18px;color:#C81878">28%</span></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid #F4F4F5"><span style="color:#3F3F46;font-size:15px">Back side windows</span><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:#0A0A0C">Any darkness</span></div>
-            <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0"><span style="color:#3F3F46;font-size:15px">Rear window</span><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:#0A0A0C">Any darkness</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0;border-bottom:1px solid #F4F4F5"><span style="color:#3F3F46;font-size:15px">Back side windows</span><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:#0A0A0C">6% minimum</span></div>
+            <div style="display:flex;justify-content:space-between;align-items:center;padding:15px 0"><span style="color:#3F3F46;font-size:15px">Rear window</span><span style="font-family:'Poppins',sans-serif;font-weight:700;font-size:15px;color:#0A0A0C">6% minimum</span></div>
           </div>
         </div>
       </div>
       <p class="bc-reveal" data-reveal style="color:#71717A;font-size:13px;margin-top:18px;line-height:1.5;font-weight:400">The AS-1 line is the manufacturer's mark near the top of your windshield. Tint above it must be non-reflective. Percentages shown are the <em>minimum</em> light that must pass through — you cannot go darker than these.</p>
     </div>
+  </section>
+
+  <section style="background:#0a0a0c;padding:24px;color:#a8a5ac">
+    <p style="max-width:1180px;margin:auto;line-height:1.7">Limits apply to the measured glass-and-film combination, not the film label alone. Visible reflectance must not exceed 25% on front sides or 35% behind the driver. Vehicle classification and applicable exemptions must be checked before installation. Sources: <a href="https://www.flsenate.gov/Laws/Statutes/2026/316.2953" style="color:#fff;text-decoration:underline">Florida Statute 316.2953</a> and <a href="https://www.flsenate.gov/Laws/Statutes/2026/316.2954" style="color:#fff;text-decoration:underline">316.2954</a>.</p>
   </section>
 
   <!-- VLT EXPLAINER -->
