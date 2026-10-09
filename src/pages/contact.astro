@@ -95,3 +95,19 @@ const jsonLd = {
     </div>
   </section>
 </BaseLayout>
+
+<script>
+  const tool=new URLSearchParams(location.search).get('tool');
+  if(tool==='auto' || tool==='home'){
+    try{
+      const saved=JSON.parse(sessionStorage.getItem('bc-tool-quote') || 'null');
+      if(saved?.tool===tool && typeof saved.summary==='string'){
+        const details=document.querySelector<HTMLTextAreaElement>('textarea[name="details"]');
+        if(details) details.value=saved.summary.slice(0,1000);
+        const service=document.querySelector<HTMLSelectElement>('select[name="service"]');
+        if(service) service.value=tool==='auto'?'Auto window tinting':'Residential window tinting';
+        sessionStorage.removeItem('bc-tool-quote');
+      }
+    }catch { /* Contact form works independently of the tools. */ }
+  }
+</script>

@@ -70,3 +70,8 @@ Medición del módulo requeriría configurar GA4 u otra analítica aparte, con e
 - DOE, selección de ventanas: https://www1.eere.energy.gov/buildings/publications/pdfs/building_america/measure_guide_windows.pdf
 - Google verificación: https://support.google.com/webmasters/answer/9008080
 - Google rendimiento: https://support.google.com/webmasters/answer/7576553
+
+## Implementación posterior
+Se añadieron AutoTintExplorer y HomeSavingsExplorer en las páginas Auto y Residential, con accesos desde Home y los encabezados de servicio. Auto usa objetivos de VLT combinado, límites de referencia y vista 2D relativa; no muestra cifras de rendimiento sin catálogo verificado. Residential permite tres escenarios, ahorro acumulado, saldo tras instalación, recuperación simple y gráfica temporal. Los botones conservan la selección en sessionStorage y rellenan el formulario únicamente cuando el usuario abre la cotización; no envían solicitudes automáticamente. No se añadieron scripts de analítica.
+
+Validación: límites 28/15/6, cálculos de escenarios, ahorro cero y entradas inválidas; compilación de 17 páginas; controles de auto y traspaso al formulario probados en navegador; calculadora residencial comprobada en escritorio y móvil.

@@ -1,0 +1,78 @@
+---
+import { routes } from '../data/site';
+---
+<section id="savings-explorer" class="bc-tool" aria-labelledby="savings-title">
+  <div class="bc-tool-inner" data-savings-tool>
+    <p class="bc-tool-eyebrow">EXPLORE THE LONG-TERM PICTURE</p>
+    <h2 id="savings-title">Could window film lower your cooling costs?</h2>
+    <p class="bc-tool-intro">Try your own assumptions to compare energy savings with installation cost. These are arithmetic scenarios, not a prediction for your home.</p>
+    <noscript><p>Enable JavaScript to calculate your scenarios. Annual savings = annual electricity cost × cooling share × assumed cooling-cost reduction. <a href={routes.contact}>Request a home assessment.</a></p></noscript>
+    <div class="bc-tool-grid">
+      <div class="bc-tool-panel">
+        <p class="bc-tool-small">Starting values are sample inputs, not local averages or a quote. Use your last 12 months of bills where possible.</p>
+        <label>Annual electricity cost ($)<input data-bill type="number" min="0" max="100000" step="any" value="2400" /></label>
+        <label>Electricity cost attributed to cooling (%)<input data-cooling type="number" min="0" max="100" step="any" value="40" /></label>
+        <label>Installation cost ($)<input data-cost type="number" min="0" max="1000000" step="any" value="1200" /></label>
+        <label>Time horizon (years)<input data-years type="number" min="1" max="30" step="1" value="5" /></label>
+        <fieldset><legend>Assumed reduction in cooling costs (%)</legend><div class="bc-scenario-inputs">
+          <label>Lower<input data-low type="number" min="0" max="100" step="any" value="10" /></label>
+          <label>Middle<input data-mid type="number" min="0" max="100" step="any" value="15" /></label>
+          <label>Higher<input data-high type="number" min="0" max="100" step="any" value="20" /></label>
+        </div></fieldset>
+        <p class="bc-tool-small">These percentages apply to cooling costs, not your whole bill or the film’s solar-energy rejection rating. They are user-chosen assumptions, not measured product performance.</p>
+      </div>
+      <div>
+        <div data-savings-results aria-live="polite" aria-atomic="true" class="bc-savings-results">
+          <h3>Your sample scenarios</h3><p>With these sample inputs, the middle scenario saves $144 per year; simple payback is about 8.3 years.</p>
+        </div>
+        <figure class="bc-savings-chart" data-savings-chart hidden><figcaption>Simple net savings over time: accumulated savings minus installation cost</figcaption></figure>
+        <p class="bc-tool-small" data-savings-error role="status"></p>
+        <div class="bc-tool-explainer"><h3>How this calculation works</h3><p>Annual electricity cost × cooling share × assumed cooling-cost reduction = annual savings. Simple payback divides installation cost by annual savings.</p><p>Actual results depend on sun exposure, glazing, film, shading, your A/C and energy prices. This model keeps annual savings constant; it excludes price changes, financing, maintenance, degradation and discounting.</p><p>Comfort, glare control and interior protection are separate benefits. We check film compatibility with your glass during an assessment.</p></div>
+        <a class="bc-tool-cta" data-home-quote href={`${routes.contact}?tool=home`}>Request a home assessment</a>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  import { savingsScenario } from '../lib/tint-tools';
+  document.querySelectorAll<HTMLElement>('[data-savings-tool]').forEach(root=>{
+    const keys=['bill','cooling','cost','years','low','mid','high'] as const;
+    const inputs=Object.fromEntries(keys.map(k=>[k,root.querySelector<HTMLInputElement>(`[data-${k}]`)!])) as Record<typeof keys[number],HTMLInputElement>;
+    const output=root.querySelector<HTMLElement>('[data-savings-results]')!;
+    const error=root.querySelector<HTMLElement>('[data-savings-error]')!;
+    const chart=root.querySelector<HTMLElement>('[data-savings-chart]')!;
+    const money=new Intl.NumberFormat('en-US',{style:'currency',currency:'USD',maximumFractionDigits:0});
+    const update=()=>{
+      const v=Object.fromEntries(keys.map(k=>[k,inputs[k].valueAsNumber])) as Record<typeof keys[number],number>;
+      const valid=keys.every(k=>inputs[k].value.trim()!=='' && inputs[k].checkValidity()) && v.low<=v.mid && v.mid<=v.high;
+      if(!valid){output.replaceChildren();chart.hidden=true;error.textContent='Enter valid values in every field. Cooling and reduction must be 0–100%, years 1–30, and Lower ≤ Middle ≤ Higher.';return;}
+      error.textContent='';output.replaceChildren();
+      for(const [label,reduction] of [['Lower',v.low],['Middle',v.mid],['Higher',v.high]] as const){
+        const result=savingsScenario(v.bill,v.cooling,reduction,v.cost,v.years)!;
+        const card=document.createElement('article');card.className='bc-scenario-card';
+        const heading=document.createElement('h3');heading.textContent=`${label} scenario · ${reduction}% cooling-cost reduction`;card.append(heading);
+        const list=document.createElement('dl');
+        const rows=[['Annual savings',money.format(result.annual)],['Savings over '+v.years+' years',money.format(result.cumulative)],['Savings minus installation',money.format(result.net)],['Simple payback',result.payback===null?'No payback at zero savings':result.payback<0.1?'Less than 0.1 years':result.payback.toFixed(1)+' years']];
+        rows.forEach(([name,value])=>{const dt=document.createElement('dt');dt.textContent=name;const dd=document.createElement('dd');dd.textContent=value;list.append(dt,dd);});card.append(list);output.append(card);
+      }
+      chart.querySelector('svg')?.remove(); chart.hidden=false;
+      const ns='http://www.w3.org/2000/svg';
+      const svg=document.createElementNS(ns,'svg'); svg.setAttribute('viewBox','0 0 560 260'); svg.setAttribute('role','img'); svg.setAttribute('aria-label',`Three net-savings scenarios over ${v.years} years, starting at minus the installation cost. Exact totals are in the cards above.`);
+      const maximum=Math.max(0,savingsScenario(v.bill,v.cooling,v.high,v.cost,v.years)!.net);
+      const minimum=-v.cost, span=Math.max(1,maximum-minimum);
+      const y=(n:number)=>25+175*(1-(n-minimum)/span);
+      const line=(x1:number,y1:number,x2:number,y2:number,color:string)=>{const el=document.createElementNS(ns,'line');for(const [k,value] of Object.entries({x1,y1,x2,y2,stroke:color,'stroke-width':2}))el.setAttribute(k,String(value));svg.append(el);};
+      const label=(x:number,yPos:number,text:string,color='#c4c0c8')=>{const el=document.createElementNS(ns,'text');el.setAttribute('x',String(x));el.setAttribute('y',String(yPos));el.setAttribute('fill',color);el.setAttribute('font-size','12');el.textContent=text;svg.append(el);};
+      for(const t of [minimum,minimum+span/2,minimum+span]){line(95,y(t),530,y(t),'#403a44');label(8,y(t)+4,money.format(t));}
+      line(95,y(0),530,y(0),'#b6adb9'); label(400,y(0)-8,'Break-even');
+      const colors=['#f5f4f6','#ee63ad','#e7bc70'];
+      [v.low,v.mid,v.high].forEach((reduction,i)=>{const result=savingsScenario(v.bill,v.cooling,reduction,v.cost,v.years)!;line(95,y(-v.cost),530,y(result.net),colors[i]);label(95+i*145,250,['Lower','Middle','Higher'][i],colors[i]);});
+      label(95,222,'Year 0');label(480,222,`Year ${v.years}`);chart.prepend(svg);
+    };
+    Object.values(inputs).forEach(el=>el.addEventListener('input',update));
+    root.querySelector('[data-home-quote]')!.addEventListener('click',()=>{
+      try { sessionStorage.setItem('bc-tool-quote',JSON.stringify({tool:'home',summary: 'Residential window film assessment. Interested in cooling costs, glare and comfort. '+(keys.every(k=>inputs[k].value.trim()!=='' && inputs[k].checkValidity()) && Number(inputs.low.value)<=Number(inputs.mid.value) && Number(inputs.mid.value)<=Number(inputs.high.value) ? `User-chosen scenarios, not a prediction: annual electricity cost $${inputs.bill.value}; assumed cooling share ${inputs.cooling.value}%; example installation cost $${inputs.cost.value}; cooling-cost reductions ${inputs.low.value}/${inputs.mid.value}/${inputs.high.value}%; horizon ${inputs.years.value} years. ` : '')+'Please assess window exposure, glass compatibility and suitable film options.'})); } catch { /* Keep the quote available. */ }
+    });
+    update();
+  });
+</script>
