@@ -92,14 +92,15 @@ html.motion-ready .bc-reveal.bc-in { opacity: 1; transform: none; }
 .bc-headwrap { position: sticky; top: 0; z-index: 60; padding: 16px 16px 0; transition: padding .35s cubic-bezier(.16,1,.3,1); }
 .bc-headwrap.bc-scrolled { padding-top: 9px; }
 .bc-head {
-  max-width: 1180px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;
+  max-width: 1400px; margin: 0 auto; display: flex; align-items: center; justify-content: space-between;
   gap: 13px; padding: 8px 8px 8px 16px; border-radius: 999px; background: rgba(16,16,20,0.55);
   backdrop-filter: blur(18px) saturate(150%); -webkit-backdrop-filter: blur(18px) saturate(150%);
   border: 1px solid rgba(255,255,255,0.09); box-shadow: 0 14px 44px -20px rgba(0,0,0,.75);
   transition: background .35s, box-shadow .35s, border-color .35s;
 }
 .bc-scrolled .bc-head { background: rgba(11,11,14,0.85); box-shadow: 0 18px 48px -16px rgba(0,0,0,.9); border-color: rgba(200,24,120,0.24); }
-.bc-nav-link { position: relative; color: #c8c5ce; font-weight: 500; transition: color .25s; padding: 6px 1px; }
+.bc-head nav.bc-desktop-nav { gap: 16px !important; flex: none; }
+.bc-nav-link { position: relative; color: #c8c5ce; font-weight: 500; transition: color .25s; padding: 6px 1px; white-space: nowrap; flex-shrink: 0; }
 .bc-nav-link:hover { color: #fff; }
 .bc-nav-link::after { content: ""; position: absolute; left: 1px; right: 1px; bottom: -1px; height: 2px; border-radius: 2px; background: #c81878; transform: scaleX(0); transform-origin: left; transition: transform .32s cubic-bezier(.16,1,.3,1); }
 .bc-nav-link:hover::after, .bc-nav-link.bc-active::after { transform: scaleX(1); }
@@ -115,8 +116,8 @@ html.motion-ready .bc-reveal.bc-in { opacity: 1; transform: none; }
 .bc-burger { display: none; align-items: center; justify-content: center; width: 44px; height: 44px; border-radius: 999px; border: 1px solid rgba(255,255,255,0.12); background: rgba(255,255,255,0.02); color: #fff; cursor: pointer; flex: none; }
 .bc-mobile-nav { display: none; }
 
-@media (max-width: 1320px) { .bc-head nav.bc-desktop-nav { gap: 16px !important; } .bc-icon-pill span { display: none; } .bc-icon-pill { padding: 10px 12px; } }
-@media (max-width: 1200px) {
+@media (max-width: 1440px) { .bc-icon-pill span { display: none; } .bc-icon-pill { padding: 10px 12px; } }
+@media (max-width: 1240px) {
   .bc-head nav.bc-desktop-nav { display: none !important; }
   .bc-burger { display: flex; }
   .bc-head { gap: 10px; padding-left: 14px; }
