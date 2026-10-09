@@ -1,0 +1,22 @@
+---
+interface Props { kind: 'auto' | 'residential' | 'commercial'; priority?: boolean; }
+const { kind, priority = false } = Astro.props;
+const descriptions = {
+  auto: 'Illustrative image of a graphite sedan with tinted side windows',
+  residential: 'Illustrative image of a bright living room with large glass windows',
+  commercial: 'Illustrative image of a modern commercial glass storefront',
+};
+---
+<figure class="bc-service-image">
+  <img src={`/images/${kind}-960.webp`}
+    srcset={`/images/${kind}-480.webp 480w, /images/${kind}-960.webp 960w, /images/${kind}-1440.webp 1440w`}
+    sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 900px) 90vw, 560px"
+    width="1440" height="960" alt={descriptions[kind]}
+    loading={priority ? 'eager' : 'lazy'} fetchpriority={priority ? 'high' : 'auto'} decoding="async" />
+  <figcaption>Illustrative image</figcaption>
+</figure>
+<style>
+  .bc-service-image { position:relative; width:100%; height:100%; min-height:240px; margin:0; overflow:hidden; border-radius:18px; background:#111114; }
+  img { display:block; width:100%; height:100%; aspect-ratio:3/2; object-fit:cover; }
+  figcaption { position:absolute; bottom:12px; right:12px; background:rgba(10,10,12,.82); padding:5px 9px; border-radius:6px; color:#f5f4f6; font-size:11px; }
+</style>

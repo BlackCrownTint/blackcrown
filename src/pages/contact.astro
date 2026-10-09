@@ -49,13 +49,14 @@ const jsonLd = {
         </div>
       </div>
 
-      <form id="bcContactForm" style="background:#fff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:15px;box-shadow:0 40px 80px -30px rgba(0,0,0,0.9)">
+      <form name="contact" method="POST" action="/thank-you/" data-netlify="true" netlify-honeypot="website" id="bcContactForm" style="background:#fff;border-radius:20px;padding:32px;display:flex;flex-direction:column;gap:15px;box-shadow:0 40px 80px -30px rgba(0,0,0,0.9)">
         <div><div style="font-family:'Poppins',sans-serif;font-weight:700;font-size:20px;color:#0A0A0C">Request your quote</div><div style="font-size:13.5px;color:#71717A;margin-top:4px">We reply within business hours.</div></div>
-        <div id="bcContactOk" style="display:none;background:#FBEAF3;border:1px solid #F3C6DF;border-radius:11px;padding:14px 16px;color:#920A5A;font-size:14px;font-weight:500;align-items:center;gap:10px"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"></path></svg>Thanks — your request was sent. (Demo: connect to email/CRM before launch.)</div>
-        <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:13px;font-weight:600;color:#3F3F46">Name</span><input required name="name" placeholder="Your name" class="bc-input" style="background:#F5F4F6;border:1px solid #E4E4E7;border-radius:11px;padding:13px 15px;color:#0A0A0C;font-size:15px;outline:none;transition:border-color .2s"></label>
+        <input type="hidden" name="form-name" value="contact" />
+        <label hidden>Leave this empty<input name="website" tabindex="-1" autocomplete="off" /></label>
+        <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:13px;font-weight:600;color:#3F3F46">Name</span><input required name="name" autocomplete="name" placeholder="Your name" class="bc-input" style="background:#F5F4F6;border:1px solid #E4E4E7;border-radius:11px;padding:13px 15px;color:#0A0A0C;font-size:15px;outline:none;transition:border-color .2s"></label>
         <div class="bc-r-2" style="display:grid;grid-template-columns:1fr 1fr;gap:13px">
-          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:13px;font-weight:600;color:#3F3F46">Phone</span><input required name="phone" placeholder="(904) 000-0000" class="bc-input" style="background:#F5F4F6;border:1px solid #E4E4E7;border-radius:11px;padding:13px 15px;color:#0A0A0C;font-size:15px;outline:none;transition:border-color .2s"></label>
-          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:13px;font-weight:600;color:#3F3F46">Email</span><input type="email" name="email" placeholder="you@email.com" class="bc-input" style="background:#F5F4F6;border:1px solid #E4E4E7;border-radius:11px;padding:13px 15px;color:#0A0A0C;font-size:15px;outline:none;transition:border-color .2s"></label>
+          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:13px;font-weight:600;color:#3F3F46">Phone</span><input required type="tel" name="phone" autocomplete="tel" placeholder="(904) 000-0000" class="bc-input" style="background:#F5F4F6;border:1px solid #E4E4E7;border-radius:11px;padding:13px 15px;color:#0A0A0C;font-size:15px;outline:none;transition:border-color .2s"></label>
+          <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:13px;font-weight:600;color:#3F3F46">Email</span><input type="email" name="email" autocomplete="email" placeholder="you@email.com" class="bc-input" style="background:#F5F4F6;border:1px solid #E4E4E7;border-radius:11px;padding:13px 15px;color:#0A0A0C;font-size:15px;outline:none;transition:border-color .2s"></label>
         </div>
         <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:13px;font-weight:600;color:#3F3F46">Service</span><select name="service" class="bc-input" style="background:#F5F4F6;border:1px solid #E4E4E7;border-radius:11px;padding:13px 15px;color:#0A0A0C;font-size:15px;outline:none;transition:border-color .2s"><option>Auto window tinting</option><option>Residential window tinting</option><option>Commercial window tinting</option><option>Ceramic tint</option><option>Not sure — help me choose</option></select></label>
         <label style="display:flex;flex-direction:column;gap:7px"><span style="font-size:13px;font-weight:600;color:#3F3F46">Details <span style="color:#A8A5AC;font-weight:400">(optional)</span></span><textarea rows="3" name="details" placeholder="Vehicle year/make/model, or windows to cover" class="bc-input" style="background:#F5F4F6;border:1px solid #E4E4E7;border-radius:11px;padding:13px 15px;color:#0A0A0C;font-size:15px;outline:none;resize:vertical;transition:border-color .2s"></textarea></label>
@@ -78,7 +79,7 @@ const jsonLd = {
       </div>
       <div class="bc-reveal" data-reveal style="border:1px solid #E4E4E7;border-radius:18px;overflow:hidden;min-height:340px;background:linear-gradient(160deg,#16161a,#1c1622);display:flex;align-items:center;justify-content:center;position:relative">
         <div style="position:absolute;inset:0;background:radial-gradient(90% 80% at 70% 20%,rgba(200,24,120,.2),transparent 58%)"></div>
-        <div style="position:absolute;top:18px;left:18px;display:flex;align-items:center;gap:8px;background:#0A0A0C;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 13px;font-size:13px;font-weight:600;color:#fff"><img src="/brand/crown-magenta.png" style="height:16px;width:auto" alt="">Black Crown Tint</div>
+        <div style="position:absolute;top:18px;left:18px;display:flex;align-items:center;gap:8px;background:#0A0A0C;border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 13px;font-size:13px;font-weight:600;color:#fff"><img src="/brand/crown-magenta.webp" style="height:16px;width:auto" alt="">Black Crown Tint</div>
         <span style="position:relative;font-size:12px;color:#C81878;font-weight:600;letter-spacing:0.04em;border:1px dashed rgba(200,24,120,0.5);padding:8px 14px;border-radius:6px;background:rgba(10,10,12,0.4)">MAP · service-area map (Google Maps embed)</span>
       </div>
     </div>
@@ -94,23 +95,3 @@ const jsonLd = {
     </div>
   </section>
 </BaseLayout>
-
-<script>
-  // Demo only — wire to a real email/CRM endpoint before launch.
-  const form = document.getElementById('bcContactForm') as HTMLFormElement | null;
-  form?.addEventListener('submit', (e) => {
-    e.preventDefault();
-    const ok = document.getElementById('bcContactOk');
-    if (ok) ok.style.display = 'flex';
-    try {
-      form.reset();
-    } catch {
-      /* no-op */
-    }
-  });
-  // Focus → magenta border on light inputs
-  document.querySelectorAll<HTMLElement>('.bc-input').forEach((el) => {
-    el.addEventListener('focus', () => (el.style.borderColor = '#C81878'));
-    el.addEventListener('blur', () => (el.style.borderColor = '#E4E4E7'));
-  });
-</script>

@@ -46,8 +46,8 @@ input::placeholder, textarea::placeholder { color: #71717a; }
 /* ---- Scroll reveal ----
    Only hide when JS is available (html.js), so content is fully visible
    without JS and in print / no-script crawlers. */
-html.js .bc-reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
-html.js .bc-reveal.bc-in { opacity: 1; transform: none; }
+html.motion-ready .bc-reveal { opacity: 0; transform: translateY(30px); transition: opacity .8s cubic-bezier(.16,1,.3,1), transform .8s cubic-bezier(.16,1,.3,1); }
+html.motion-ready .bc-reveal.bc-in { opacity: 1; transform: none; }
 
 /* ---- Cards / hover ---- */
 .bc-svc { transition: transform .45s cubic-bezier(.16,1,.3,1), box-shadow .45s cubic-bezier(.16,1,.3,1); }
@@ -171,6 +171,9 @@ input, select, textarea { max-width: 100%; }
 /* ---- Reduced motion ---- */
 @media (prefers-reduced-motion: reduce) {
   *, *::before, *::after { animation-duration: .001ms !important; animation-iteration-count: 1 !important; transition-duration: .001ms !important; scroll-behavior: auto !important; }
-  html.js .bc-reveal { opacity: 1 !important; transform: none !important; }
+  html.motion-ready .bc-reveal { opacity: 1 !important; transform: none !important; }
   .bc-cursor { display: none !important; }
 }
+
+/* Keep visible keyboard focus on interactive controls. */
+a:focus-visible, button:focus-visible, input:focus-visible, select:focus-visible, textarea:focus-visible { outline:3px solid #c81878 !important; outline-offset:4px; }

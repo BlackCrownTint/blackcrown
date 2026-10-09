@@ -40,6 +40,7 @@ function scrollReveal() {
     { threshold: 0.12, rootMargin: '0px 0px -8% 0px' }
   );
   els.forEach((el) => io.observe(el));
+  document.documentElement.classList.add('motion-ready');
 }
 
 function headerScroll() {

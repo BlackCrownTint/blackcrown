@@ -11,6 +11,7 @@ export const site = {
   phoneAltHref: 'tel:+19047493655',
   email: 'info@blackcrowntint.net',
   emailHref: 'mailto:info@blackcrowntint.net',
+  googleReviewHref: 'https://g.page/r/CTjJreiHsR63EAI/review',
   instagram: '@blackcrowntint',
   instagramHref: 'https://instagram.com/blackcrowntint',
   city: 'Jacksonville',

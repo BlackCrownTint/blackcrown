@@ -48,13 +48,9 @@ Per-page `<title>` / meta / canonical / Open Graph, JSON-LD per page type
 auto-generated `sitemap-index.xml` and `robots.txt`. Update `site` in
 `astro.config.mjs` and `src/data/site.ts` to the real production domain before launch.
 
-## Before launch (placeholders to replace)
-- **Real photos** — Gallery tiles, before/after blocks and the About founder photo are
-  labelled placeholders (`IMG · …`).
-- **Real reviews** — Reviews page + Home reviews use placeholder copy and a placeholder
-  5.0 rating; wire `AggregateRating` schema once real reviews exist.
-- **Map embeds** — Contact + Service Areas have labelled Google Maps placeholders.
-- **Contact / quote forms** — submit is demo-only (shows a success message + resets);
-  connect to a real email/CRM endpoint.
-- **Per-zone pages** — only Jacksonville Beach has a dedicated page; clone the template
-  with unique 300+ word copy per zone (the rest link to Contact) before publishing them.
+## Media and launch checks
+Service images in `public/images/` are AI-generated illustrations, not project photographs. The ServiceImage component delivers responsive WebP variants. Add authentic project and team photos when available.
+
+Quote and contact forms use Netlify Forms native POST. Enable form detection in Netlify and configure notifications before deploying; test a real submission after deployment. Local preview does not provide the Netlify form backend.
+
+See [WEBSITE-REVIEW.md](WEBSITE-REVIEW.md) for the review, checks and remaining work, including coverage maps and dependency alerts.
