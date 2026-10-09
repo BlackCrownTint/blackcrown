@@ -23,6 +23,7 @@ const isActive = (href: string) => {
         <a href={item.href} class:list={['bc-nav-link', { 'bc-active': isActive(item.href) }]}>{item.label}</a>
       ))}
       <a href={`${routes.auto}#tint-explorer`} class="bc-explore-btn">Explore Tint</a>
+      <a href={`${routes.residential}#savings-explorer`} class="bc-explore-btn">Home Savings</a>
     </nav>
 
     <div style="display:flex;align-items:center;gap:10px;flex:none">
@@ -51,6 +52,9 @@ const isActive = (href: string) => {
     </a>
   ))}
   <a href={`${routes.auto}#tint-explorer`} class="bc-mnav bc-explore-mobile">Explore Tint
+    <span aria-hidden="true">→</span>
+  </a>
+  <a href={`${routes.residential}#savings-explorer`} class="bc-mnav bc-explore-mobile">Home Savings
     <span aria-hidden="true">→</span>
   </a>
   <a href={routes.contact} class="bc-mnav" style="color:#C81878">Free Quote
