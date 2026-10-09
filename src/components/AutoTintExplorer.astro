@@ -1,0 +1,84 @@
+---
+import { routes } from '../data/site';
+---
+<section id="tint-explorer" class="bc-tool" aria-labelledby="tint-title">
+  <div class="bc-tool-inner" data-auto-tool>
+    <p class="bc-tool-eyebrow">EXPLORE YOUR OPTIONS</p>
+    <h2 id="tint-title">Less heat. The right tint.</h2>
+    <p class="bc-tool-intro">Start with your goal, then explore clarity and Florida’s VLT references. A darker window is not a heat-performance rating.</p>
+    <noscript><p>Enable JavaScript to adjust the preview. Front side windows require at least 28% combined VLT; rear windows require 15%, or 6% for qualifying multipurpose vehicles. <a href={routes.contact}>Ask us to measure your glass.</a></p></noscript>
+    <div class="bc-tool-grid">
+      <div>
+        <div class="bc-car-scene">
+          <svg viewBox="0 0 760 350" role="img" aria-label="Illustrative side view of a car with independently shaded front and rear side windows">
+            <defs><linearGradient id="carPaint" x2="0%" y2="100%"><stop stop-color="#838a93"/><stop offset="1" stop-color="#2b313b"/></linearGradient></defs>
+            <rect width="760" height="350" fill="#e5eaf0"/>
+            <path d="M0 255H760" stroke="#c5ced8" stroke-width="3"/>
+            <path d="M55 225L100 205L215 110Q230 98 258 98H455Q475 98 497 125L554 190L681 212Q713 219 714 246L695 273H61Z" fill="url(#carPaint)" stroke="#222831" stroke-width="3"/>
+            <path d="M231 117H335V184H142Z" fill="#182630" opacity=".8" data-rear-glass/>
+            <path d="M350 117H453Q463 117 481 140L517 184H350Z" fill="#182630" opacity=".65" data-front-glass/>
+            <path d="M336 109V266M350 193H515M164 193H327" stroke="#20252b" stroke-width="5"/>
+            <path d="M369 204H390M270 204H291" stroke="#c2c9cf" stroke-width="5" stroke-linecap="round"/>
+            <circle cx="177" cy="268" r="47" fill="#16191e"/><circle cx="177" cy="268" r="25" fill="#afb8c4"/>
+            <circle cx="592" cy="268" r="47" fill="#16191e"/><circle cx="592" cy="268" r="25" fill="#afb8c4"/>
+            <path d="M671 218H700" stroke="#f3e9c7" stroke-width="9"/>
+            <text x="238" y="72" text-anchor="middle" font-size="18" fill="#303d4c">Rear sides</text>
+            <text x="432" y="72" text-anchor="middle" font-size="18" fill="#303d4c">Front sides</text>
+          </svg>
+          <p>Relative illustration. Screen colors do not reproduce real glass. The windshield is not part of this preview.</p>
+        </div>
+        <div class="bc-tool-explainer"><h3>Clarity and heat control are different</h3><p>VLT describes visible light passing through glass and film. Compare verified total solar energy rejection (TSER) figures at similar VLT to understand heat performance. Product specifications and your existing glass determine the right installation.</p><a href={routes.ceramicVsCarbon}>Explore ceramic vs. carbon →</a></div>
+      </div>
+      <div class="bc-tool-panel">
+        <label>Your main goal<select data-goal><option value="Heat control">Heat control</option><option value="Less glare">Less glare</option><option value="More privacy">More privacy</option><option value="More daylight and visibility">More daylight and visibility</option></select></label>
+        <p class="bc-tool-small" data-goal-advice>Ask us to compare heat-control films at similar clarity. Darker does not automatically mean better heat performance.</p>
+        <label>Vehicle classification<select data-vehicle><option value="passenger">Passenger vehicle / sedan</option><option value="multipurpose">Qualifying multipurpose vehicle</option></select></label>
+        <p class="bc-tool-small">Some SUVs and vans qualify as multipurpose vehicles. We check your vehicle’s classification before choosing film.</p>
+        <label for="front-target">Front sides: target combined VLT <output data-front-output>35%</output></label>
+        <input id="front-target" data-front type="range" min="5" max="90" value="35" step="1" />
+        <label for="rear-target">Rear windows: target combined VLT <output data-rear-output>20%</output></label>
+        <input id="rear-target" data-rear type="range" min="5" max="90" value="20" step="1" />
+        <p class="bc-tool-small">Lower % means less visible light. Targets refer to the glass-and-film combination, not a film package’s label.</p>
+        <div class="bc-tool-result" aria-live="polite" aria-atomic="true" data-vlt-status>Front 35%: within the 28% VLT reference. Rear 20%: within the 15% VLT reference.</div>
+        <p class="bc-tool-small">A VLT reference is not approval of an installation. Front reflectivity must be ≤25%; rear ≤35%. Windshield rules and exemptions are separate. Confirm with an on-vehicle measurement.</p>
+        <a href={routes.floridaLaws}>Read the Florida tint guide →</a>
+        <a class="bc-tool-cta" data-auto-quote href={`${routes.contact}?tool=auto`}>Get advice for this setup</a>
+      </div>
+    </div>
+  </div>
+</section>
+<script>
+  import { vltReference } from '../lib/tint-tools';
+  document.querySelectorAll<HTMLElement>('[data-auto-tool]').forEach(root => {
+    const front = root.querySelector<HTMLInputElement>('[data-front]')!;
+    const rear = root.querySelector<HTMLInputElement>('[data-rear]')!;
+    const vehicle = root.querySelector<HTMLSelectElement>('[data-vehicle]')!;
+    const goal = root.querySelector<HTMLSelectElement>('[data-goal]')!;
+    const advice: Record<string,string> = {
+      'Heat control':'Ask us to compare heat-control films at similar clarity. Darker does not automatically mean better heat performance.',
+      'Less glare':'Explore reduced light transmission, while keeping enough visibility for your driving conditions.',
+      'More privacy':'Rear-window options depend on vehicle classification. Film is not a substitute for securing valuables.',
+      'More daylight and visibility':'Ask about lighter film options and compare heat performance separately from visible darkness.'
+    };
+    const update = () => {
+      const f = Number(front.value), r = Number(rear.value), minimum = vehicle.value === 'multipurpose' ? 6 : 15;
+      root.querySelector('[data-front-output]')!.textContent = `${f}%`;
+      root.querySelector('[data-rear-output]')!.textContent = `${r}%`;
+      front.setAttribute('aria-valuetext',`${f}% target combined visible light transmission`);
+      rear.setAttribute('aria-valuetext',`${r}% target combined visible light transmission`);
+      // A monotonic relative preview; deliberately not a calibrated optical simulation.
+      root.querySelector('[data-front-glass]')!.setAttribute('opacity',String(1-f/100));
+      root.querySelector('[data-rear-glass]')!.setAttribute('opacity',String(1-r/100));
+      const message = (name:string, v:number, min:number) => `${name} ${v}%: ${vltReference(v,min)==='below'?'below':'within'} the ${min}% VLT reference.`;
+      const status=root.querySelector<HTMLElement>('[data-vlt-status]')!;
+      status.textContent = message('Front',f,28)+' '+message('Rear',r,minimum);
+      status.dataset.warning=String(f<28 || r<minimum);
+      root.querySelector('[data-goal-advice]')!.textContent=advice[goal.value];
+    };
+    [front,rear,vehicle,goal].forEach(el => el.addEventListener('input',update));
+    root.querySelector('[data-auto-quote]')!.addEventListener('click',()=>{
+      try { sessionStorage.setItem('bc-tool-quote',JSON.stringify({tool:'auto',summary:`Auto tint consultation. Goal: ${goal.value}. Vehicle classification: ${vehicle.selectedOptions[0].textContent}. Target combined VLT: front ${front.value}%, rear ${rear.value}%. Please confirm glass measurements and product options.`})); } catch { /* Quote remains available without storage. */ }
+    });
+    update();
+  });
+</script>
