@@ -1,4 +1,5 @@
 ---
+import RelatedResources from '../components/RelatedResources.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FAQ from '../components/FAQ.astro';
 import CTASection from '../components/CTASection.astro';
@@ -64,13 +65,10 @@ const jsonLd = [
           <a href={routes.contact} class="bc-ghost" style="border:1px solid rgba(255,255,255,0.22);color:#fff;font-weight:600;font-size:15px;padding:15px 28px;border-radius:10px">Get a free quote</a>
         </div>
       </div>
-      <div style="position:relative;aspect-ratio:4/5;border-radius:20px;overflow:hidden;border:1px solid rgba(255,255,255,0.1);box-shadow:0 40px 80px -30px rgba(0,0,0,.8);background:linear-gradient(170deg,#1a1620,#2a1424)">
-        <div style="position:absolute;inset:0;background:radial-gradient(100% 80% at 70% 18%,rgba(200,24,120,.3),transparent 58%)"></div>
-        <div style="position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);display:flex;flex-direction:column;align-items:center;gap:16px">
-          <svg width="64" height="64" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"></path><path d="m9 12 2 2 4-4"></path></svg>
-          <div style="text-align:center"><div style="font-family:'Poppins',sans-serif;font-weight:800;font-size:30px;color:#fff">100% Legal</div><div style="color:#A8A5AC;font-size:13px;margin-top:4px">installs, every time</div></div>
-        </div>
-      </div>
+      <figure class="laws-real-photo">
+        <img src="/images/project-02.webp" width="768" height="1024" alt="Real Black Crown Tint project showing the side windows of a green Jeep" loading="eager" fetchpriority="high" decoding="async" />
+        <figcaption><span>REAL BLACK CROWN PROJECT</span><strong>Choose your tint.<br/>Know the limits.</strong><p>Photo shows our work. Installed VLT must be measured on the vehicle.</p><a href={`${routes.auto}#tint-explorer`}>Explore tint targets &rarr;</a></figcaption>
+      </figure>
     </div>
   </section>
 
@@ -196,5 +194,10 @@ const jsonLd = [
 
   <FAQ items={faqs} eyebrow="FAQ" heading="Florida tint law questions" />
 
+<RelatedResources heading="Plan your window tint installation" links={[{href:routes.auto,label:"Auto window tinting in Jacksonville",text:"Discuss film choices, visibility and the measured glass-and-film result."},{href:routes.ceramic,label:"Ceramic window tint options",text:"Compare performance and clarity for your vehicle."},{href:routes.serviceAreas,label:"Mobile service areas",text:"Check where we can discuss your project."}]} />
   <CTASection heading="Want legal, professional tint in Jacksonville?" sub="We install 3M film that meets Florida law and looks sharp — backed for life. Get a free quote today." />
 </BaseLayout>
+
+<style>
+.laws-real-photo{position:relative;margin:0;border-radius:22px;overflow:hidden;background:#17141b}.laws-real-photo>img{display:block;width:100%;height:540px;object-fit:cover}.laws-real-photo figcaption{position:absolute;bottom:0;left:0;right:0;padding:100px 24px 26px;background:linear-gradient(transparent,#08080a 80%)}.laws-real-photo span{font-size:10px;color:#ffb5dc;letter-spacing:.12em}.laws-real-photo strong{display:block;font-size:28px;line-height:1.15;margin:12px 0}.laws-real-photo p{font-size:12px;line-height:1.6;color:#c5c0cc;max-width:300px;margin-bottom:16px}.laws-real-photo a{color:#ffb5dc;display:inline-block;padding:8px 0;font-size:13px;font-weight:600}@media(max-width:650px){.laws-real-photo>img{height:470px}}
+</style>

@@ -1,6 +1,7 @@
 ---
 import ServiceImage from '../../components/ServiceImage.astro';
 import HomeSavingsExplorer from '../../components/HomeSavingsExplorer.astro';
+import RelatedResources from '../../components/RelatedResources.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import FAQ from '../../components/FAQ.astro';
@@ -9,7 +10,7 @@ import { routes, site } from '../../data/site';
 
 const title = 'Residential Window Tinting Jacksonville | Black Crown Tint';
 const description =
-  'Residential window tinting in Jacksonville, FL. 3M home film cuts heat, lowers energy bills, blocks 99% of UV and adds privacy. Lifetime warranty. Free quote.';
+  'Home window tinting in Jacksonville, FL. Explore film options for heat, glare and privacy, compare savings scenarios and request a home assessment.';
 
 const benefits = [
   { t: 'Lower energy bills', d: 'Reject solar heat so your A/C runs less and rooms stay evenly cool.', svg: '<path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"></path>' },
@@ -47,7 +48,7 @@ const jsonLd = [
     provider: { '@type': 'LocalBusiness', name: site.name, telephone: '+19048930927', areaServed: 'Jacksonville, FL' },
     areaServed: 'Jacksonville, FL and Northeast Florida',
     url: site.url + routes.residential,
-    description: 'Residential 3M window film in Jacksonville, FL — solar, privacy, security and decorative film with a lifetime ceramic warranty.',
+    description,
   },
   {
     '@context': 'https://schema.org',
@@ -64,7 +65,7 @@ const jsonLd = [
     <div class="bc-r-hero" style="position:relative;max-width:1180px;margin:0 auto;padding:60px 24px 64px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:54px;align-items:center">
       <div>
         <Breadcrumb items={[{ label: 'Home', href: routes.home }, { label: 'Residential Window Tinting' }]} />
-        <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(36px,5vw,58px);line-height:1.03;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:22px">Residential<br>Window Tinting</h1>
+        <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(36px,5vw,58px);line-height:1.03;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:22px">Residential<br>Window Tinting<span style="display:block;font-size:.55em;line-height:1.5;margin-top:14px">in Jacksonville, FL</span></h1>
         <p style="font-size:18.5px;line-height:1.6;color:#A8A5AC;max-width:500px;font-weight:400">Cooler rooms, lower power bills and floors and furniture that don't fade. 3M home film that blocks 99% of UV and adds privacy — installed across Jacksonville.</p>
         <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:32px">
           <a href={routes.contact} data-magnetic class="bc-cta-btn" style="background:#C81878;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;padding:16px 30px;border-radius:10px;display:flex;align-items:center;gap:10px">Get a free quote <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
@@ -125,5 +126,6 @@ const jsonLd = [
 
   <FAQ items={faqs} eyebrow="FAQ" heading="Home tint questions" dark={true} />
 
+<RelatedResources heading="Explore film for your property" links={[{href:routes.commercial,label:"Commercial window film",text:"Planning a business property? Explore commercial installation."},{href:routes.serviceAreas,label:"Residential tinting service areas",text:"Check mobile coverage and discuss your home location."},{href:routes.gallery,label:"Real residential window film project",text:"See exterior and interior photos from our work."}]} />
   <CTASection bg="#111114" heading="Cooler home, lower bills" sub="Protect your home from the Florida sun. Get a free in-home quote today." />
 </BaseLayout>

@@ -1,11 +1,12 @@
 ---
+import RelatedResources from '../components/RelatedResources.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FAQ from '../components/FAQ.astro';
 import { routes, site } from '../data/site';
 
 const title = 'How Much Does Window Tinting Cost? | Black Crown Tint';
 const description =
-  'What window tinting costs in Jacksonville, FL — by vehicle type and film (carbon vs ceramic), the 5 factors that move your price, and why cheap tint costs more.';
+  'Compare window tinting cost factors in Jacksonville, FL, including vehicle size, glass and film choice. Understand sample ranges and get a project quote.';
 
 const vehicles = [
   { name: 'Coupe / Sedan', note: '2 doors + rear', range: '$', svg: '<path d="M5 13l1.5-4.5A2 2 0 0 1 8.4 7h7.2a2 2 0 0 1 1.9 1.5L19 13M5 13h14v4H5z"></path>' },
@@ -128,4 +129,5 @@ const jsonLd = [
       </div>
     </div>
   </section>
+<RelatedResources heading="Turn your research into a project quote" links={[{href:routes.auto,label:"Auto window tinting",text:"Compare film options and installation needs for your vehicle."},{href:routes.ceramicVsCarbon,label:"Ceramic vs. carbon tint",text:"Understand the differences before choosing a film."},{href:routes.serviceAreas,label:"Window tinting service areas",text:"Explore our mobile coverage in Northeast Florida."}]} />
 </BaseLayout>

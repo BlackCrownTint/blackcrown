@@ -8,12 +8,12 @@ import { routes, site, homeAreas } from '../data/site';
 
 const title = 'Window Tinting Jacksonville FL | Black Crown Tint';
 const description =
-  'Premium 3M auto, residential & commercial window tinting in Jacksonville, FL. Lifetime ceramic warranty, 100% mobile. Crown your ride — free quote today.';
+  'Mobile window tinting in Jacksonville, FL for cars, homes and businesses. Compare film options for heat, glare and privacy. Request a free quote.';
 
 const stats = [
-  { to: 99, suffix: '%', label: 'of UV blocked' },
-  { to: 60, suffix: '%+', label: 'heat rejected' },
-  { to: 18, suffix: '', label: 'areas served' },
+  { to: 3, suffix: '', label: 'service categories' },
+  { to: 3, suffix: '', label: 'real project stories' },
+  { to: 10, suffix: '', label: 'real project photos' },
   { to: 100, suffix: '%', label: 'mobile service' },
 ];
 
@@ -24,7 +24,7 @@ const faqs = [
   { q: 'How long does an install take?', a: "A typical full-vehicle install takes a few hours. Because we're mobile, we come to you — and we let the film cure fully over the following days." },
   { q: 'Is your tint legal in Florida?', a: "Yes. We install to Florida's legal VLT limits — 28% on front side windows and 15% on sedan rears — so you avoid fix-it tickets. See our Florida tint laws guide for the full breakdown." },
   { q: 'Will tint fade or turn purple?', a: 'Not with quality film. Cheap dyed film turns purple and bubbles over time. Our 3M carbon and ceramic films hold their color and performance — backed by a lifetime ceramic warranty (5 years on carbon).' },
-  { q: 'Do you offer a warranty?', a: 'Yes — a lifetime warranty on 3M ceramic film and 5 years on 3M carbon, covered against everything.' },
+  { q: 'Do you offer a warranty?', a: 'Ask about the warranty for the film and installation in your quote. Coverage and exclusions depend on the selected product and application.' },
 ];
 
 const jsonLd = {
@@ -54,11 +54,8 @@ const jsonLd = {
         <div style="display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(200,24,120,0.45);border-radius:999px;padding:7px 15px;font-size:12px;font-weight:600;letter-spacing:0.05em;color:#fff;margin-bottom:26px;background:rgba(200,24,120,0.1)">
           <span style="width:6px;height:6px;background:#C81878;border-radius:50%;animation:bcPulse 2s ease-in-out infinite"></span>JACKSONVILLE · 100% MOBILE SERVICE
         </div>
-        <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(40px,5.6vw,68px);line-height:1.0;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:24px">
-          <span style="display:block;overflow:hidden;padding-bottom:3px"><span class="bc-hero-word">Crown</span></span>
-          <span style="display:block;overflow:hidden;padding-bottom:3px"><span class="bc-hero-word">your&nbsp;</span><span class="bc-hero-word" style="color:#C81878">ride</span></span>
-        </h1>
-        <p style="font-size:18.5px;line-height:1.62;color:#A8A5AC;max-width:480px;font-weight:400">Premium 3M ceramic film that beats the Florida heat, blocks 99% of UV and finishes your car like the exotics we tinted in Dubai. Backed for life.</p>
+        <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(36px,4.5vw,56px);line-height:1.08;letter-spacing:-0.02em;margin-bottom:24px">Mobile Window Tinting<br/><span style="color:#C81878">in Jacksonville, FL</span></h1>
+        <p style="font-size:18.5px;line-height:1.62;color:#A8A5AC;max-width:480px;font-weight:400">Explore film options for heat, glare and privacy, with mobile installation for cars, homes and businesses. Tell us about your glass and we will help you compare the right options.</p>
         <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:34px">
           <a href={routes.contact} data-magnetic class="bc-cta-btn" style="background:#C81878;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;padding:16px 30px;border-radius:10px;display:flex;align-items:center;gap:10px">Get a free quote
             <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
@@ -68,8 +65,8 @@ const jsonLd = {
             {site.phone}</a>
         </div>
         <div style="display:flex;align-items:center;gap:22px;margin-top:34px;flex-wrap:wrap">
-          <div style="display:flex;align-items:center;gap:9px;font-size:13px;color:#A8A5AC;font-weight:500"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"></path><path d="m9 12 2 2 4-4"></path></svg>3M Authorized</div>
-          <div style="display:flex;align-items:center;gap:9px;font-size:13px;color:#A8A5AC;font-weight:500"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"></path></svg>Lifetime warranty</div>
+          <div style="display:flex;align-items:center;gap:9px;font-size:13px;color:#A8A5AC;font-weight:500"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2 4 5v6c0 5 3.4 8.5 8 11 4.6-2.5 8-6 8-11V5l-8-3z"></path><path d="m9 12 2 2 4-4"></path></svg>Film options</div>
+          <div style="display:flex;align-items:center;gap:9px;font-size:13px;color:#A8A5AC;font-weight:500"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="8" r="6"></circle><path d="M8.21 13.89 7 23l5-3 5 3-1.21-9.12"></path></svg>Product guidance</div>
           <div style="display:flex;align-items:center;gap:9px;font-size:13px;color:#A8A5AC;font-weight:500"><svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 17h14M5 17a2 2 0 0 1-2-2v-1a5 5 0 0 1 5-5h8a5 5 0 0 1 5 5v1a2 2 0 0 1-2 2M7 17v2M17 17v2"></path></svg>We come to you</div>
         </div>
       </div>
@@ -83,10 +80,10 @@ const jsonLd = {
   <section style="background:#111114;border-top:1px solid rgba(200,24,120,0.2);border-bottom:1px solid rgba(255,255,255,0.05);overflow:hidden;padding:18px 0">
     <div style="display:flex;width:max-content;animation:bcMarquee 32s linear infinite">
       <div style="display:flex;align-items:center;gap:38px;padding-right:38px;color:#A8A5AC;font-size:14px;font-weight:600;letter-spacing:0.06em;white-space:nowrap">
-        <span style="display:flex;align-items:center;gap:38px"><span>3M™ AUTHORIZED FILMS</span><span style="color:#C81878">✦</span><span>LIFETIME CERAMIC WARRANTY</span><span style="color:#C81878">✦</span><span>100% MOBILE SERVICE</span><span style="color:#C81878">✦</span><span>DUBAI EXOTIC EXPERIENCE</span><span style="color:#C81878">✦</span><span>LICENSED &amp; INSURED</span><span style="color:#C81878">✦</span></span>
+        <span style="display:flex;align-items:center;gap:38px"><span>AUTOMOTIVE WINDOW FILM</span><span style="color:#C81878">✦</span><span>RESIDENTIAL WINDOW FILM</span><span style="color:#C81878">✦</span><span>100% MOBILE SERVICE</span><span style="color:#C81878">✦</span><span>REAL PROJECT PHOTOS</span><span style="color:#C81878">✦</span><span>FREE PROJECT QUOTES</span><span style="color:#C81878">✦</span></span>
       </div>
       <div style="display:flex;align-items:center;gap:38px;padding-right:38px;color:#A8A5AC;font-size:14px;font-weight:600;letter-spacing:0.06em;white-space:nowrap" aria-hidden="true">
-        <span style="display:flex;align-items:center;gap:38px"><span>3M™ AUTHORIZED FILMS</span><span style="color:#C81878">✦</span><span>LIFETIME CERAMIC WARRANTY</span><span style="color:#C81878">✦</span><span>100% MOBILE SERVICE</span><span style="color:#C81878">✦</span><span>DUBAI EXOTIC EXPERIENCE</span><span style="color:#C81878">✦</span><span>LICENSED &amp; INSURED</span><span style="color:#C81878">✦</span></span>
+        <span style="display:flex;align-items:center;gap:38px"><span>AUTOMOTIVE WINDOW FILM</span><span style="color:#C81878">✦</span><span>RESIDENTIAL WINDOW FILM</span><span style="color:#C81878">✦</span><span>100% MOBILE SERVICE</span><span style="color:#C81878">✦</span><span>REAL PROJECT PHOTOS</span><span style="color:#C81878">✦</span><span>FREE PROJECT QUOTES</span><span style="color:#C81878">✦</span></span>
       </div>
     </div>
   </section>
