@@ -4,18 +4,17 @@ const { kind, priority = false } = Astro.props;
 const descriptions = {
   auto: 'Black Crown Tint project: tinted side windows on a gray pickup',
   residential: 'Black Crown Tint project: large residential windows viewed from the deck',
-  commercial: 'Illustrative image of a modern commercial glass storefront',
+  commercial: 'Black Crown Tint installation process: protective cover on an open vehicle door',
 };
-const real = kind !== 'commercial';
-const stem = real ? `${kind}-project` : kind;
+const stem = kind === 'commercial' ? 'installation-project' : `${kind}-project`;
 ---
 <figure class="bc-service-image">
   <img src={`/images/${stem}-960.webp`}
-    srcset={real ? `/images/${stem}-480.webp 480w, /images/${stem}-960.webp 768w` : `/images/${stem}-480.webp 480w, /images/${stem}-960.webp 960w, /images/${stem}-1440.webp 1440w`}
+    srcset={`/images/${stem}-480.webp 480w, /images/${stem}-960.webp 768w`}
     sizes="(max-width: 640px) calc(100vw - 48px), (max-width: 900px) 90vw, 560px"
-    width={real ? 768 : 1440} height={real ? 1024 : 960} alt={descriptions[kind]}
+    width="768" height="1024" alt={descriptions[kind]}
     loading={priority ? 'eager' : 'lazy'} fetchpriority={priority ? 'high' : 'auto'} decoding="async" />
-  <figcaption>{real ? 'Black Crown Tint project' : 'Illustrative image'}</figcaption>
+  <figcaption>{kind === 'commercial' ? 'Our installation process' : 'Black Crown Tint project'}</figcaption>
 </figure>
 <style>
   .bc-service-image { position:relative; width:100%; height:100%; min-height:240px; margin:0; overflow:hidden; border-radius:18px; background:#111114; }

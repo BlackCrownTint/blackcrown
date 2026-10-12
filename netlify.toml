@@ -9,6 +9,16 @@
 # Astro outputs per-page index.html under clean folders; Netlify serves them
 # directly. This catch-all only returns the 404 page for truly missing paths.
 [[redirects]]
+  from = "/gallery"
+  to = "/casos-de-exito/"
+  status = 301
+
+[[redirects]]
+  from = "/gallery/"
+  to = "/casos-de-exito/"
+  status = 301
+
+[[redirects]]
   from = "/*"
   to = "/404.html"
   status = 404
