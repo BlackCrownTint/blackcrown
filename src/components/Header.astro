@@ -1,6 +1,10 @@
 ---
 import { nav, routes, site } from '../data/site';
 
+const groups = [
+  {label:'Services', items:[{label:'Auto tint',href:routes.auto},{label:'Home tint',href:routes.residential},{label:'Commercial tint',href:routes.commercial}]},
+  {label:'Explore', items:[{label:'Auto Tint Explorer',href:`${routes.auto}#tint-explorer`},{label:'Home Savings Calculator',href:`${routes.residential}#savings-explorer`}]},
+];
 const path = Astro.url.pathname.replace(/\/+$/, '') || '/';
 const isActive = (href: string) => {
   const h = href.replace(/\/+$/, '') || '/';
@@ -19,15 +23,14 @@ const isActive = (href: string) => {
     </a>
 
     <nav class="bc-desktop-nav" style="display:flex;align-items:center;gap:22px;font-size:14px">
+      {groups.map(group => <details class="bc-nav-group"><summary>{group.label}<span aria-hidden="true">⌄</span></summary><div class="bc-nav-dropdown">{group.items.map(item => <a href={item.href}>{item.label}</a>)}</div></details>)}
       {nav.map((item) => (
         <a href={item.href} class:list={['bc-nav-link', { 'bc-active': isActive(item.href) }]}>{item.label}</a>
       ))}
-      <a href={`${routes.auto}#tint-explorer`} class="bc-explore-btn">Explore Tint</a>
-      <a href={`${routes.residential}#savings-explorer`} class="bc-explore-btn">Home Savings</a>
     </nav>
 
     <div style="display:flex;align-items:center;gap:10px;flex:none">
-      <a href={site.phoneHref} class="bc-icon-pill">
+      <a href={site.phoneHref} class="bc-icon-pill" aria-label={`Call ${site.phone}`}>
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.13.96.36 1.9.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.91.34 1.85.57 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
         <span>{site.phone}</span>
       </a>
@@ -46,17 +49,12 @@ const isActive = (href: string) => {
   <button class="bc-mclose" id="bcClose" aria-label="Close menu">
     <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
   </button>
+  {groups.map(group => <div class="bc-mobile-group"><p>{group.label}</p>{group.items.map(item => <a href={item.href} class="bc-mnav">{item.label}<span aria-hidden="true">&rarr;</span></a>)}</div>)}
   {nav.map((item) => (
     <a href={item.href} class="bc-mnav">{item.label}
       <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
     </a>
   ))}
-  <a href={`${routes.auto}#tint-explorer`} class="bc-mnav bc-explore-mobile">Explore Tint
-    <span aria-hidden="true">→</span>
-  </a>
-  <a href={`${routes.residential}#savings-explorer`} class="bc-mnav bc-explore-mobile">Home Savings
-    <span aria-hidden="true">→</span>
-  </a>
   <a href={routes.contact} class="bc-mnav" style="color:#C81878">Free Quote
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="#C81878" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg>
   </a>
@@ -66,6 +64,10 @@ const isActive = (href: string) => {
 </nav>
 
 <script>
+  const dropdowns = document.querySelectorAll<HTMLDetailsElement>('.bc-nav-group');
+  dropdowns.forEach(group => group.addEventListener('toggle', () => { if (group.open) dropdowns.forEach(other => { if(other !== group) other.open = false; }); }));
+  document.addEventListener('click', event => { dropdowns.forEach(group => { if (!group.contains(event.target as Node)) group.open = false; }); });
+  document.addEventListener('keydown', event => { if (event.key === 'Escape') dropdowns.forEach(group => { if(group.open) { group.open = false; group.querySelector('summary')?.focus(); } }); });
   const burger = document.getElementById('bcBurger');
   const close = document.getElementById('bcClose');
   const drawer = document.getElementById('bcMobileNav');

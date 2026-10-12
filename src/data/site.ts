@@ -42,11 +42,8 @@ export const routes = {
 
 // Center-nav items used in the header.
 export const nav = [
-  { label: 'Auto', href: routes.auto },
-  { label: 'Residential', href: routes.residential },
-  { label: 'Commercial', href: routes.commercial },
-  { label: 'Tint Laws', href: routes.floridaLaws },
   { label: 'Success Stories', href: routes.gallery },
+  { label: 'Tint Laws', href: routes.floridaLaws },
   { label: 'About', href: routes.about },
 ];
 
