@@ -35,6 +35,15 @@ const schemas = noindex ? [] : [pageGraph(canonical, title, description, jsonLd 
     <meta name="google-site-verification" content="y8SNXpjmibNs8LQQzpmH5UfBt0X3Ka1YuC7QdJUeJ24" />
     <link rel="canonical" href={canonical} />
 
+    <!-- Google tag (gtag.js) -->
+    <script is:inline async src="https://www.googletagmanager.com/gtag/js?id=G-DWF736885D"></script>
+    <script is:inline>
+      window.dataLayer = window.dataLayer || [];
+      function gtag(){dataLayer.push(arguments);}
+      gtag('js', new Date());
+      gtag('config', 'G-DWF736885D');
+    </script>
+
     <!-- Open Graph / Twitter -->
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="Black Crown Tint" />
