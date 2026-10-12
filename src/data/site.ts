@@ -37,16 +37,13 @@ export const routes = {
   cost: '/window-tinting-cost/',
   installation: '/window-tint-installation/',
   serviceAreas: '/service-areas/',
-  gallery: '/gallery/',
+  gallery: '/casos-de-exito/',
 } as const;
 
 // Center-nav items used in the header.
 export const nav = [
-  { label: 'Auto', href: routes.auto },
-  { label: 'Residential', href: routes.residential },
-  { label: 'Commercial', href: routes.commercial },
+  { label: 'Success Stories', href: routes.gallery },
   { label: 'Tint Laws', href: routes.floridaLaws },
-  { label: 'Gallery', href: routes.gallery },
   { label: 'About', href: routes.about },
 ];
 
