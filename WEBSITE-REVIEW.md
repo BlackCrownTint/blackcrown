@@ -26,3 +26,6 @@ Compilación correcta de 17 páginas. Revisadas la portada y el menú móvil a 3
 
 ## Recursos
 Imágenes creadas con la herramienta ImageGen. Versiones listas para web en public/images. No hay una medición de Lighthouse antes/después; los tamaños son de archivos, no tiempos de carga.
+
+## Fotos reales — 12 de octubre de 2026
+Recibidas 20 fotos de WhatsApp. Se seleccionaron 10 para una galería de Jeep, pickup, vivienda e instalación. Las imágenes compartidas de autos y viviendas ahora utilizan fotografías reales optimizadas a WebP, conservando los originales fuera del repositorio. La imagen comercial sigue siendo ilustrativa. No se asignaron VLT, marca de película, ubicación exacta, ahorro ni antes/después sin confirmar.
