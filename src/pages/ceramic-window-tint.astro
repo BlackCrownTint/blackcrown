@@ -7,7 +7,7 @@ import { routes, site } from '../data/site';
 
 const title = 'Ceramic Window Tint Jacksonville | Black Crown Tint';
 const description =
-  'Premium 3M ceramic window tint in Jacksonville, FL. Maximum heat rejection, 99% UV blocked, crystal clarity and no signal interference. Lifetime warranty.';
+  'Explore ceramic window tint in Jacksonville, FL. Compare clarity and heat-control options, discuss product details and request a free installation quote.';
 
 const whatPoints = [
   { t: 'Blocks infrared heat', d: 'The heat you actually feel — rejected at the glass.', svg: '<circle cx="12" cy="12" r="4"></circle><path d="M12 2v2M12 20v2M2 12h2M20 12h2M5 5l1.5 1.5M17.5 17.5 19 19M19 5l-1.5 1.5M6.5 17.5 5 19"></path>' },
@@ -49,7 +49,7 @@ const jsonLd = [
     provider: { '@type': 'LocalBusiness', name: site.name, telephone: '+19048930927', areaServed: 'Jacksonville, FL' },
     areaServed: 'Jacksonville, FL and Northeast Florida',
     url: site.url + routes.ceramic,
-    description: 'Premium 3M nano-ceramic window tint in Jacksonville, FL — maximum infrared heat rejection, 99% UV protection and a lifetime warranty.',
+    description,
   },
   {
     '@context': 'https://schema.org',
@@ -67,7 +67,7 @@ const jsonLd = [
       <div>
         <Breadcrumb items={[{ label: 'Home', href: routes.home }, { label: 'Ceramic Window Tint' }]} />
         <div style="display:inline-flex;align-items:center;gap:9px;border:1px solid rgba(200,24,120,0.45);border-radius:999px;padding:7px 15px;font-size:12px;font-weight:600;letter-spacing:0.05em;color:#fff;margin-bottom:22px;background:rgba(200,24,120,.1)"><span style="width:6px;height:6px;background:#C81878;border-radius:50%;animation:bcPulse 2s ease-in-out infinite"></span>OUR PREMIUM TIER</div>
-        <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(36px,5vw,58px);line-height:1.03;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:22px">Ceramic<br>Window Tint</h1>
+        <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(36px,5vw,58px);line-height:1.03;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:22px">Ceramic<br>Window Tint<span style="display:block;font-size:.55em;line-height:1.5;margin-top:14px">in Jacksonville, FL</span></h1>
         <p style="font-size:18.5px;line-height:1.6;color:#A8A5AC;max-width:500px;font-weight:400">The premium choice for heat rejection. Maximum comfort, crystal clarity and zero interference with your GPS, phone or keyless entry — backed for life.</p>
         <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:32px">
           <a href={routes.contact} data-magnetic class="bc-cta-btn" style="background:#C81878;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;padding:16px 30px;border-radius:10px;display:flex;align-items:center;gap:10px">Get a free quote <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>

@@ -7,9 +7,14 @@ export interface Props {
   items: Crumb[];
 }
 const { items } = Astro.props;
+import { canonicalUrl } from '../lib/seo';
+const schema = { '@context': 'https://schema.org', '@type': 'BreadcrumbList',
+  '@id': `${canonicalUrl(Astro.url.pathname)}#breadcrumb`,
+  itemListElement: items.map((c, i) => ({ '@type': 'ListItem', position: i + 1, name: c.label,
+    item: canonicalUrl(c.href ?? Astro.url.pathname) })) };
 ---
 
-<div style="display:flex;align-items:center;gap:9px;font-size:13px;color:#A8A5AC;font-weight:500;margin-bottom:20px;flex-wrap:wrap">
+<nav aria-label="Breadcrumb" style="display:flex;align-items:center;gap:9px;font-size:13px;color:#A8A5AC;font-weight:500;margin-bottom:20px;flex-wrap:wrap">
   {items.map((c, i) => (
     <>
       {c.href ? (
@@ -20,4 +25,5 @@ const { items } = Astro.props;
       {i < items.length - 1 && <span style="color:#3F3F46">/</span>}
     </>
   ))}
-</div>
+</nav>
+<script type="application/ld+json" set:html={JSON.stringify(schema)} />

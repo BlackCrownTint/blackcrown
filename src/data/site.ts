@@ -4,7 +4,7 @@
 export const site = {
   name: 'Black Crown Tint',
   legalName: 'Black Crown Tint',
-  url: 'https://www.blackcrowntint.net',
+  url: 'https://blackcrowntint.net',
   phone: '(904) 893-0927',
   phoneAlt: '(904) 749-3655',
   phoneHref: 'tel:+19048930927',

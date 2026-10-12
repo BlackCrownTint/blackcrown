@@ -2,6 +2,7 @@
 import '../styles/global.css';
 import Header from '../components/Header.astro';
 import Footer from '../components/Footer.astro';
+import { canonicalUrl, pageGraph } from '../lib/seo';
 
 export interface Props {
   title: string;
@@ -12,13 +13,14 @@ export interface Props {
   jsonLd?: Record<string, unknown> | Record<string, unknown>[];
   /** Set when the dark body chrome should differ; default jet black. */
   bodyBg?: string;
+  noindex?: boolean;
 }
 
-const { title, description, image = '/brand/social-card.jpg', jsonLd, bodyBg = '#0A0A0C' } = Astro.props;
+const { title, description, image = '/brand/social-card.jpg', jsonLd, bodyBg = '#0A0A0C', noindex = false } = Astro.props;
 
-const canonical = new URL(Astro.url.pathname, Astro.site ?? 'https://www.blackcrowntint.net').href;
-const ogImage = new URL(image, Astro.site ?? 'https://www.blackcrowntint.net').href;
-const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
+const canonical = canonicalUrl(Astro.url.pathname);
+const ogImage = new URL(image, canonical).href;
+const schemas = noindex ? [] : [pageGraph(canonical, title, description, jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [])];
 ---
 
 <!DOCTYPE html>
@@ -29,6 +31,7 @@ const schemas = jsonLd ? (Array.isArray(jsonLd) ? jsonLd : [jsonLd]) : [];
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
     <meta name="description" content={description} />
+    {noindex && <meta name="robots" content="noindex, follow" />}
     <meta name="google-site-verification" content="y8SNXpjmibNs8LQQzpmH5UfBt0X3Ka1YuC7QdJUeJ24" />
     <link rel="canonical" href={canonical} />
 

@@ -1,5 +1,6 @@
 ---
 import ServiceImage from '../../components/ServiceImage.astro';
+import RelatedResources from '../../components/RelatedResources.astro';
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import Breadcrumb from '../../components/Breadcrumb.astro';
 import FAQ from '../../components/FAQ.astro';
@@ -8,7 +9,7 @@ import { routes, site } from '../../data/site';
 
 const title = 'Commercial Window Tinting Jacksonville | Black Crown Tint';
 const description =
-  'Commercial window tinting in Jacksonville, FL. 3M solar, security and decorative film cuts A/C costs, protects interiors and adds privacy. Free commercial quote.';
+  'Commercial window tinting in Jacksonville, FL for offices and storefronts. Discuss heat, glare, privacy and film options. Request a project quote.';
 
 const benefits = [
   { t: 'Cut A/C costs', d: 'Reject solar heat through large glass to ease the load on your HVAC and lower bills.', svg: '<path d="M13 2 4 14h6l-1 8 9-12h-6l1-8z"></path>' },
@@ -50,7 +51,7 @@ const jsonLd = [
     provider: { '@type': 'LocalBusiness', name: site.name, telephone: '+19048930927', areaServed: 'Jacksonville, FL' },
     areaServed: 'Jacksonville, FL and Northeast Florida',
     url: site.url + routes.commercial,
-    description: 'Commercial 3M window film in Jacksonville, FL — solar control, security/safety, decorative branding and anti-graffiti film.',
+    description,
   },
   {
     '@context': 'https://schema.org',
@@ -67,7 +68,7 @@ const jsonLd = [
     <div class="bc-r-hero" style="position:relative;max-width:1180px;margin:0 auto;padding:60px 24px 64px;display:grid;grid-template-columns:1.05fr 0.95fr;gap:54px;align-items:center">
       <div>
         <Breadcrumb items={[{ label: 'Home', href: routes.home }, { label: 'Commercial Window Tinting' }]} />
-        <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(36px,5vw,58px);line-height:1.03;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:22px">Commercial<br>Window Tinting</h1>
+        <h1 style="font-family:'Poppins',sans-serif;font-weight:800;font-size:clamp(36px,5vw,58px);line-height:1.03;letter-spacing:-0.01em;text-transform:uppercase;margin-bottom:22px">Commercial<br>Window Tinting<span style="display:block;font-size:.55em;line-height:1.5;margin-top:14px">in Jacksonville, FL</span></h1>
         <p style="font-size:18.5px;line-height:1.6;color:#A8A5AC;max-width:500px;font-weight:400">Lower cooling costs, keep staff and customers comfortable, and protect your space — from offices to storefronts across Jacksonville.</p>
         <div style="display:flex;flex-wrap:wrap;gap:13px;margin-top:32px">
           <a href={routes.contact} data-magnetic class="bc-cta-btn" style="background:#C81878;color:#fff;font-family:'Poppins',sans-serif;font-weight:700;font-size:15.5px;padding:16px 30px;border-radius:10px;display:flex;align-items:center;gap:10px">Request a commercial quote <svg width="17" height="17" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"><line x1="5" y1="12" x2="19" y2="12"></line><polyline points="12 5 19 12 12 19"></polyline></svg></a>
@@ -134,5 +135,6 @@ const jsonLd = [
 
   <FAQ items={faqs} eyebrow="FAQ" heading="Commercial tint questions" dark={true} />
 
+<RelatedResources heading="Plan your property installation" links={[{href:routes.residential,label:"Residential window film",text:"Explore film choices for a home as well as business spaces."},{href:routes.serviceAreas,label:"Commercial service areas",text:"Discuss your location and project scope."},{href:routes.contact,label:"Request a commercial quote",text:"Tell us about the glass, access and your priorities."}]} />
   <CTASection bg="#111114" heading="Tint your business, cut your costs" sub="Get a commercial quote tailored to your space and schedule." ctaLabel="Request a commercial quote" />
 </BaseLayout>

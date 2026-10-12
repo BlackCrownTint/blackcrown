@@ -1,4 +1,5 @@
 ---
+import RelatedResources from '../components/RelatedResources.astro';
 import BaseLayout from '../layouts/BaseLayout.astro';
 import FAQ from '../components/FAQ.astro';
 import CTASection from '../components/CTASection.astro';
@@ -109,5 +110,6 @@ const jsonLd = [
 
   <FAQ items={faqs} eyebrow="FAQ" heading="Installation questions" />
 
+<RelatedResources heading="Choose a service for your installation" links={[{href:routes.auto,label:"Professional auto window tinting",text:"Plan film selection and your vehicle installation."},{href:routes.residential,label:"Residential window film",text:"Discuss installation on the glass in your home."},{href:routes.serviceAreas,label:"Mobile installation service areas",text:"Check locations and discuss the setup needed for your project."}]} />
   <CTASection heading="Ready to book your install?" sub="We're 100% mobile — we bring the install to you. Get a free quote today." />
 </BaseLayout>

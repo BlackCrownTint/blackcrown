@@ -1,0 +1,17 @@
+---
+interface Props { heading: string; links: { href: string; label: string; text: string }[]; }
+const { heading, links } = Astro.props;
+---
+<section class="related-resources" aria-label={heading}>
+  <h2>{heading}</h2>
+  <div>{links.map(link => <a href={link.href}><h3>{link.label}</h3><p>{link.text}</p><span aria-hidden="true">&rarr;</span></a>)}</div>
+</section>
+<style>
+.related-resources{max-width:1180px;margin:auto;padding:48px 24px;color:#fff}
+h2{font-size:clamp(24px,3vw,32px);line-height:1.25;margin-bottom:24px}
+.related-resources>div{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:18px}
+a{position:relative;display:block;border:1px solid #39313b;border-radius:14px;padding:24px 24px 42px;background:#17131b}
+h3{font-size:16px;line-height:1.5;color:#ffb5dc;margin-bottom:10px}p{font-size:13px;color:#bdb9c4;line-height:1.8}span{position:absolute;bottom:16px;right:24px;color:#ffb5dc}
+a:hover{border-color:#ffb5dc}a:focus-visible{outline:2px solid #ffb5dc;outline-offset:4px}
+@media(max-width:700px){.related-resources>div{grid-template-columns:1fr}}
+</style>
